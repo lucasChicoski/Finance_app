@@ -73,3 +73,4 @@ Testes Unitários e de Widget: Escreva testes unitários para as lógicas de neg
 Tratamento de Erros: Implemente uma estratégia eficaz para lidar com erros, como mostrar mensagens de erro ao usuário e registrar os detalhes para análise posterior.
 
 Adapte essa estrutura conforme necessário, dependendo das complexidades específicas do seu projeto. Lembre-se de manter a coesão e a modularidade para facilitar a manutenção e a evolução do código.# Finance_app
+# Finance_app
