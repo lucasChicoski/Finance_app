@@ -11,6 +11,7 @@ class ExpenseDTO {
   int? parcela;
   DateTime date;
   bool isDivided;
+  int userId;
   //metodos
 
   ExpenseDTO({
@@ -21,12 +22,14 @@ class ExpenseDTO {
     required this.valorGasto,
     required this.date,
     required this.isDivided,
+    required this.userId,
     this.prestacoes,
     this.parcela,
   });
 
   factory ExpenseDTO.fromJSON(Map<String, dynamic> json) {
     return ExpenseDTO(
+        userId:  json['id_user'] is int ? json['id_user'] : int.parse(json['id_user']) ,
         isDivided: json["is_divided"] is bool
             ? json["is_divided"]
             : bool.parse(json["is_divided"]),
@@ -41,11 +44,11 @@ class ExpenseDTO {
             : int.parse(json["parcela"]), //pode dar erro
         prestacoes: json["prestacoes"] is double
             ? json["prestacoes"]
-            : double.parse(json["prestacoes"]), //possível erro,
+            : double.parse(json["prestacoes"].toString()), //possível erro,
         tipoDespesa: json["tipo_despesa"],
         valorGasto: json["valor_gasto"] is double
             ? json["valor_gasto"]
-            : double.parse(json["valor_gasto"])); //pode dar erro
+            : double.parse(json["valor_gasto"].toString())); //pode dar erro
   }
 
   Map<String, dynamic> toJSON() {
@@ -58,7 +61,8 @@ class ExpenseDTO {
       "tipo_despesa": tipoDespesa,
       "valueSpent": valorGasto,
       "is_divided": isDivided,
-      "date": Global.getDate()
+      "date": Global.getDate().toString(),
+      "id_user": userId
     };
   }
 }

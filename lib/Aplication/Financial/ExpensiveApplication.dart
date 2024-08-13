@@ -4,8 +4,6 @@ import 'package:scaffold_project/Utils/IOC.dart';
 
 class ExpensiveApplication {
   Future insertExpense(Map<String, String> json) async {
-
-    
     ExpenseDTO financialNotDevidedDTO = ExpenseDTO.fromJSON(json);
 
     ExpenseSservice expenseSservice =

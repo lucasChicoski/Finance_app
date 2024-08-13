@@ -142,7 +142,9 @@ class FinancialViewModel extends ChangeNotifier {
       "descriptionSpent": descriptionSpent,
       "tipo_despesa": waySpent,
       "date": Global.getDate().toString(),
-      "is_divided": isDivided.toString()
+      "is_divided": isDivided.toString(),
+      "id_user": 1.toString(), //Utilizar padrão de cache.
+      "expense_installment_id": ""
     };
 
     try {
