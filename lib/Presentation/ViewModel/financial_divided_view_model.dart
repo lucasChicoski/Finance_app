@@ -64,7 +64,6 @@ class FinancialDividedViewModel extends ChangeNotifier {
 
       response =
           await _expensesInstallmentsApplication.insertInstallments(item);
-      const x = 0;
     } catch (e) {
       return;
     }
