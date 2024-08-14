@@ -1,4 +1,5 @@
 import 'package:scaffold_project/Domain/DTO/ExpenseInstallmentDTO.dart';
+import 'package:scaffold_project/Global/dio_instance.dart';
 import 'package:scaffold_project/Infra/Repositories/expense_installments/IExpenses_installments_repository.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -23,24 +24,29 @@ class ExpensesInstallmentsRepositories
 
   @override
   Future insertExpense(ExpenseInstallmentDTO value) async {
-    await _database.transaction((db) async {
-      await db.rawInsert("""
-         INSERT INTO despesas_parceladas(
-            descricao_despesa,
-            valor_gasto,
-            prestacoes,
-            parcela
-         ) VALUES (
-            "${value.descricaoDespesa}",
-            ${value.valorGasto},
-            ${value.prestacoes},
-            ${value.qParcela}
-         )
- """);
-    });
+    var result = await DioInstance.dio()
+        .post('/register-installments-expense', data: value.toJson());
 
-    //trazer apenas o item adicionado.
-    return await _database.rawQuery("SELECT * FROM despesas_parceladas");
+//     await _database.transaction((db) async {
+//       await db.rawInsert("""
+//          INSERT INTO despesas_parceladas(
+//             descricao_despesa,
+//             valor_gasto,
+//             prestacoes,
+//             parcela
+//          ) VALUES (
+//             "${value.descricaoDespesa}",
+//             ${value.valorGasto},
+//             ${value.prestacoes},
+//             ${value.qParcela}
+//          )
+//  """);
+//     });
+
+//     //trazer apenas o item adicionado.
+//     return await _database.rawQuery("SELECT * FROM despesas_parceladas");
+
+    return result.data['data'];
   }
 
   @override

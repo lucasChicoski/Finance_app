@@ -9,7 +9,13 @@ class ExpensesInstallmentsApplication {
     ExpensesInstallmentsService expensesInstallmentsService =
         ServiceFactory.getService(ServiceType.expensesInstallmentsService);
 
-    await expensesInstallmentsService.insertExpensesInstallments(expenseDTO);
+    var result = await expensesInstallmentsService
+        .insertExpensesInstallments(expenseDTO);
+
+    ExpenseInstallmentDTO expenseInstallmentReturn =
+        ExpenseInstallmentDTO.fromJson(result);
+
+    return expenseInstallmentReturn;
   }
 
   Future<List<ExpenseInstallmentDTO>> getExpensesInstallments() async {

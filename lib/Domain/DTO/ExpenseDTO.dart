@@ -12,6 +12,7 @@ class ExpenseDTO {
   DateTime date;
   bool isDivided;
   int userId;
+  int? expenseInstallmentId;
   //metodos
 
   ExpenseDTO({
@@ -25,30 +26,24 @@ class ExpenseDTO {
     required this.userId,
     this.prestacoes,
     this.parcela,
+    this.expenseInstallmentId,
   });
 
   factory ExpenseDTO.fromJSON(Map<String, dynamic> json) {
     return ExpenseDTO(
-        userId:  json['id_user'] is int ? json['id_user'] : int.parse(json['id_user']) ,
-        isDivided: json["is_divided"] is bool
-            ? json["is_divided"]
-            : bool.parse(json["is_divided"]),
-        date: json["date"] is DateTime
-            ? json["date"]
-            : DateTime.parse(json["date"]),
+        expenseInstallmentId:
+            int.tryParse(json['id_despesas_parceladas'].toString()),
+        userId: int.parse(json['id_user'].toString()),
+        isDivided: bool.parse(json["is_divided"].toString()),
+        date: DateTime.parse(json["date"].toString()),
         hash: json["hash"],
         descricaoDespesa: json["descriptionSpent"] ?? json["descricao_despesa"],
-        month: json["month"] is int ? json["month"] : int.parse(json["month"]),
-        parcela: json["parcela"] is int
-            ? json["parcela"]
-            : int.parse(json["parcela"]), //pode dar erro
-        prestacoes: json["prestacoes"] is double
-            ? json["prestacoes"]
-            : double.parse(json["prestacoes"].toString()), //possível erro,
+        month: int.parse(json["month"].toString()),
+        parcela: int.parse(json["parcela"].toString()), //pode dar erro
+        prestacoes: double.parse(json["prestacoes"].toString()), //possível erro,
         tipoDespesa: json["tipo_despesa"],
-        valorGasto: json["valor_gasto"] is double
-            ? json["valor_gasto"]
-            : double.parse(json["valor_gasto"].toString())); //pode dar erro
+        valorGasto:
+            double.parse(json["valor_gasto"].toString())); //pode dar erro
   }
 
   Map<String, dynamic> toJSON() {
@@ -62,7 +57,8 @@ class ExpenseDTO {
       "valueSpent": valorGasto,
       "is_divided": isDivided,
       "date": Global.getDate().toString(),
-      "id_user": userId
+      "id_user": userId,
+      "id_despesas_parceladas": expenseInstallmentId
     };
   }
 }

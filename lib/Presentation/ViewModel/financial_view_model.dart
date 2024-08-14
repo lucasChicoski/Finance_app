@@ -91,15 +91,20 @@ class FinancialViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future addExpense(String waySpent, String description, double valueSpent,
-      BuildContext context,
-      {bool popContext = true,
-      int qParcela = 0,
-      double valueParcela = 0,
-      bool isDivided = false,
-      bool configureMonth = false,
-      bool addItemList = true,
-      int month = 0}) async {
+  Future addExpense(
+    String waySpent,
+    String description,
+    double valueSpent,
+    BuildContext context, {
+    bool popContext = true,
+    int qParcela = 0,
+    double valueParcela = 0,
+    bool isDivided = false,
+    bool configureMonth = false,
+    bool addItemList = true,
+    int month = 0,
+    int? expenseInstallmentId,
+  }) async {
     if (waySpent.isEmpty || description.isEmpty || valueSpent == 0) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -130,7 +135,6 @@ class FinancialViewModel extends ChangeNotifier {
               hash));
     }
     //Adiciona os valores para contabilizar.
-    // var x = Global.getDate();
 
     Map<String, String> item = {
       "hash": hash,
@@ -139,12 +143,12 @@ class FinancialViewModel extends ChangeNotifier {
           configureMonth ? month.toString() : Global.getDate().month.toString(),
       "parcela": qParcela.toString(),
       "prestacoes": valueParcela.toString(),
-      "descriptionSpent": descriptionSpent,
+      "descriptionSpent": descriptionSpent.isEmpty ? description : descriptionSpent,
       "tipo_despesa": waySpent,
       "date": Global.getDate().toString(),
       "is_divided": isDivided.toString(),
       "id_user": 1.toString(), //Utilizar padrão de cache.
-      "expense_installment_id": ""
+      "id_despesas_parceladas": expenseInstallmentId.toString()
     };
 
     try {

@@ -50,16 +50,21 @@ class FinancialDividedViewModel extends ChangeNotifier {
 
     valueParcela = double.parse((valueSpent / qParcela).toStringAsFixed(2));
 
+    ExpenseInstallmentDTO response;
+
     //Gravar no banco
     try {
       Map<String, String> item = {
         "descricao_despesa": description,
         "valor_gasto": valueSpent.toString(),
-        "prestacoes": valueParcela.toString(),
-        "parcela": qParcela.toString()
+        "prestacoes": valueParcela.toString(), //Valor das prestações
+        "parcela": qParcela.toString(), // Quantidade de parcela
+        "user_id": 1.toString()
       };
 
-      await _expensesInstallmentsApplication.insertInstallments(item);
+      response =
+          await _expensesInstallmentsApplication.insertInstallments(item);
+      const x = 0;
     } catch (e) {
       return;
     }
@@ -68,16 +73,23 @@ class FinancialDividedViewModel extends ChangeNotifier {
         RowOfTable(description, qParcela, valueParcela, valueSpent, hash)
             .row());
 
-    for (var i = 1; i <= qParcela; i++) {
+    for (var i = 0; i < qParcela; i++) {
       await _financialViewModel.addExpense(
-          'Despesa parcelada', '$description - Parcela $i', valueSpent, context,
-          popContext: false,
-          isDivided: true,
-          qParcela: qParcela,
-          valueParcela: valueParcela,
-          configureMonth: true,
-          month: i == 1 ? Global.getDate().month : Global.getDate().month + 1,
-          addItemList: i == 0 ? true : false);
+        'Despesa parcelada',
+        '$description - Parcela $i',
+        valueSpent,
+        context,
+        popContext: false,
+        isDivided: true,
+        qParcela: qParcela,
+        valueParcela: valueParcela,
+        configureMonth: true,
+        month: i == 0
+            ? Global.getDate().month
+            : getCurrentMonth(Global.getDate().month, i),
+        addItemList: i == 0 ? true : false,
+        expenseInstallmentId: response.id,
+      );
     }
 
     this.valueSpent = 0;
@@ -85,6 +97,17 @@ class FinancialDividedViewModel extends ChangeNotifier {
     notifyListeners();
 
     NavigationPages.pop(context);
+  }
+
+  int getCurrentMonth(int currentMonth, int iteratorMonth) {
+    int month;
+    if ((currentMonth + iteratorMonth) <= 12) {
+      month = currentMonth + iteratorMonth;
+      return month;
+    } else {
+      month = ((currentMonth + iteratorMonth) - 1) % 12 + 1;
+      return month;
+    }
   }
 
   loadTable(List<ExpenseInstallmentDTO> itens) {

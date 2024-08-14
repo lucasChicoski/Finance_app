@@ -8,7 +8,8 @@ class ExpensesInstallmentsService {
         RepositoryFactory.getRepository(
             RepositoryType.expensesInstallmentsRepositories);
 
-    await expensesInstallmentsRepositories.insertExpense(value);
+    var result = await expensesInstallmentsRepositories.insertExpense(value);
+    return result;
   }
 
   Future<List<ExpenseInstallmentDTO>> getExpensesInstallments() async {
