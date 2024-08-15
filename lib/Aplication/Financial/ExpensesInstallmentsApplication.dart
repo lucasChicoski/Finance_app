@@ -18,12 +18,12 @@ class ExpensesInstallmentsApplication {
     return expenseInstallmentReturn;
   }
 
-  Future<List<ExpenseInstallmentDTO>> getExpensesInstallments() async {
+  Future<List<ExpenseInstallmentDTO>> getExpensesInstallments(int userId) async {
     ExpensesInstallmentsService expensesInstallmentsService =
         ServiceFactory.getService(ServiceType.expensesInstallmentsService);
 
     List<ExpenseInstallmentDTO> result =
-        await expensesInstallmentsService.getExpensesInstallments();
+        await expensesInstallmentsService.getExpensesInstallments(userId);
 
     return result;
   }

@@ -58,8 +58,9 @@ class PreLoader {
     ExpensesInstallmentsApplication expenseInstallmenteApp =
         ExpensesInstallmentsApplication();
 
+    //é necessario buscar no cache o id do usuário
     List<ExpenseInstallmentDTO> result =
-        await expenseInstallmenteApp.getExpensesInstallments();
+        await expenseInstallmenteApp.getExpensesInstallments(1);
 
     _dividedViewModel.loadTable(result);
   }

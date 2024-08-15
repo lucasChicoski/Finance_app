@@ -5,5 +5,5 @@ abstract class IExpensesInstallmentsRepository {
   Future insertExpense(ExpenseInstallmentDTO value);
   Future updateExpense(ExpenseInstallmentDTO value);
   Future deleteExpense(String hash);
-  Future getExpense();
+  Future getExpense(int userId);
 }

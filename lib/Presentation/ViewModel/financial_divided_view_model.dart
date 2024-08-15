@@ -12,6 +12,9 @@ ExpensesInstallmentsApplication _expensesInstallmentsApplication =
     ExpensesInstallmentsApplication();
 
 class FinancialDividedViewModel extends ChangeNotifier {
+  //Aux Var
+  int _year = Global.getDate().year;
+  //Global Var
   String description = '';
   double valueSpent = 0;
   int qParcela = 0;
@@ -40,7 +43,7 @@ class FinancialDividedViewModel extends ChangeNotifier {
   addExpense(String description, double valueSpent, int qParcela,
       BuildContext context) async {
     String hash = Global.getHash();
-
+    _year = Global.getDate().year;
     //Validação se o valor gasto e quantidade de parcela existe
 
     if (this.valueSpent < 1) {
@@ -82,12 +85,13 @@ class FinancialDividedViewModel extends ChangeNotifier {
         isDivided: true,
         qParcela: qParcela,
         valueParcela: valueParcela,
-        configureMonth: true,
         month: i == 0
             ? Global.getDate().month
             : getCurrentMonth(Global.getDate().month, i),
+        year: _year,
         addItemList: i == 0 ? true : false,
         expenseInstallmentId: response.id,
+        iteratorParcela: i
       );
     }
 
@@ -105,6 +109,7 @@ class FinancialDividedViewModel extends ChangeNotifier {
       return month;
     } else {
       month = ((currentMonth + iteratorMonth) - 1) % 12 + 1;
+      if (month == 12 || month == 1) _year = _year + 1;
       return month;
     }
   }

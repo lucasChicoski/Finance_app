@@ -12,14 +12,14 @@ class ExpensesInstallmentsService {
     return result;
   }
 
-  Future<List<ExpenseInstallmentDTO>> getExpensesInstallments() async {
+  Future<List<ExpenseInstallmentDTO>> getExpensesInstallments(int userId) async {
     List<ExpenseInstallmentDTO> listExpensesInstallments = [];
 
     ExpensesInstallmentsRepositories expensesInstallmentsRepositories =
         RepositoryFactory.getRepository(
             RepositoryType.expensesInstallmentsRepositories);
 
-    var result = await expensesInstallmentsRepositories.getExpense();
+    var result = await expensesInstallmentsRepositories.getExpense(userId);
 
     for (var element in result) {
       ExpenseInstallmentDTO item = ExpenseInstallmentDTO.fromJson(element);

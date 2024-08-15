@@ -13,9 +13,11 @@ class ExpenseDTO {
   bool isDivided;
   int userId;
   int? expenseInstallmentId;
+  int year;
   //metodos
 
   ExpenseDTO({
+    required this.year,
     required this.hash,
     required this.descricaoDespesa,
     required this.month,
@@ -31,6 +33,7 @@ class ExpenseDTO {
 
   factory ExpenseDTO.fromJSON(Map<String, dynamic> json) {
     return ExpenseDTO(
+        year: int.parse(json["year"].toString()),
         expenseInstallmentId:
             int.tryParse(json['id_despesas_parceladas'].toString()),
         userId: int.parse(json['id_user'].toString()),
@@ -40,7 +43,8 @@ class ExpenseDTO {
         descricaoDespesa: json["descriptionSpent"] ?? json["descricao_despesa"],
         month: int.parse(json["month"].toString()),
         parcela: int.parse(json["parcela"].toString()), //pode dar erro
-        prestacoes: double.parse(json["prestacoes"].toString()), //possível erro,
+        prestacoes:
+            double.parse(json["prestacoes"].toString()), //possível erro,
         tipoDespesa: json["tipo_despesa"],
         valorGasto:
             double.parse(json["valor_gasto"].toString())); //pode dar erro
@@ -58,7 +62,8 @@ class ExpenseDTO {
       "is_divided": isDivided,
       "date": Global.getDate().toString(),
       "id_user": userId,
-      "id_despesas_parceladas": expenseInstallmentId
+      "id_despesas_parceladas": expenseInstallmentId,
+      "year": year
     };
   }
 }

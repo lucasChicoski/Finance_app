@@ -4,10 +4,10 @@ import 'package:scaffold_project/Infra/Repositories/expenses_repositorie/IExpens
 import 'package:sqflite/sqflite.dart';
 
 class ExpensesRepositorie implements IExpensesRepository {
-  late Database _database;
+  // late Database _database;
 
   ExpensesRepositorie(Database database) {
-    _database = database;
+    // _database = database;
   }
 
   @override

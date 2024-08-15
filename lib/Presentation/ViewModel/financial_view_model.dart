@@ -100,10 +100,12 @@ class FinancialViewModel extends ChangeNotifier {
     int qParcela = 0,
     double valueParcela = 0,
     bool isDivided = false,
-    bool configureMonth = false,
     bool addItemList = true,
     int month = 0,
+    int year = 0,
     int? expenseInstallmentId,
+    //excluir posteriormente
+    int iteratorParcela = -1,
   }) async {
     if (waySpent.isEmpty || description.isEmpty || valueSpent == 0) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -139,11 +141,12 @@ class FinancialViewModel extends ChangeNotifier {
     Map<String, String> item = {
       "hash": hash,
       "valor_gasto": valueSpent.toString(),
-      "month":
-          configureMonth ? month.toString() : Global.getDate().month.toString(),
+      "month": isDivided ? month.toString() : Global.getDate().month.toString(),
+      "year": isDivided ? year.toString() : Global.getDate().year.toString(),
       "parcela": qParcela.toString(),
       "prestacoes": valueParcela.toString(),
-      "descriptionSpent": descriptionSpent.isEmpty ? description : descriptionSpent,
+      "descriptionSpent":
+          descriptionSpent.isEmpty ? description : descriptionSpent,
       "tipo_despesa": waySpent,
       "date": Global.getDate().toString(),
       "is_divided": isDivided.toString(),
@@ -159,7 +162,13 @@ class FinancialViewModel extends ChangeNotifier {
 
     despesasCadastradas.add(item);
 
-    await calculateBalance(despesasCadastradas);
+    if (addItemList && isDivided) {
+      await calculateBalance(despesasCadastradas);
+    }
+
+    if (!isDivided) {
+      await calculateBalance(despesasCadastradas);
+    }
 
     setWaySpent("");
     setDescriptionSpent("");

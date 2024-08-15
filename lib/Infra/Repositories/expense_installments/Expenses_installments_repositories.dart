@@ -5,21 +5,22 @@ import 'package:sqflite/sqflite.dart';
 
 class ExpensesInstallmentsRepositories
     implements IExpensesInstallmentsRepository {
-  late Database _database;
+  // late Database _database;
   ExpensesInstallmentsRepositories(Database database) {
-    _database = database;
+    // _database = database;
   }
 
   @override
   Future deleteExpense(String hash) {
-    // TODO: implement deleteExpense
     throw UnimplementedError();
   }
 
   @override
-  Future getExpense() async {
-    // TODO: implement getExpense
-    return await _database.rawQuery("SELECT * FROM despesas_parceladas");
+  Future getExpense(int userId) async {
+    var result = await DioInstance.dio()
+        .post('/get-installments-expense', data: {"user_id": userId});
+    // return await _database.rawQuery("SELECT * FROM despesas_parceladas");
+    return result.data["data"];
   }
 
   @override
@@ -51,7 +52,6 @@ class ExpensesInstallmentsRepositories
 
   @override
   Future updateExpense(ExpenseInstallmentDTO value) {
-    // TODO: implement updateExpense
     throw UnimplementedError();
   }
 }
