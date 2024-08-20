@@ -1,9 +1,12 @@
 import 'package:get_it/get_it.dart';
+import 'package:scaffold_project/Global/dio_instance.dart';
 import 'package:scaffold_project/Infra/DataBase/SqFlite/sqflite.dart';
+import 'package:scaffold_project/Infra/Repositories/category/CategoryRepository.dart';
 import 'package:scaffold_project/Infra/Repositories/config_repositories/finance/config_finance_repository.dart';
 import 'package:scaffold_project/Infra/Repositories/config_repositories/user/config_user_repository.dart';
 import 'package:scaffold_project/Infra/Repositories/expense_installments/Expenses_installments_repositories.dart';
 import 'package:scaffold_project/Infra/Repositories/expenses_repositorie/ExpensesRepositorie.dart';
+import 'package:scaffold_project/Service/CategoryService.dart';
 import 'package:scaffold_project/Service/Configs/FinanceConfigService.dart';
 import 'package:scaffold_project/Service/Configs/UserConfigService.dart';
 import 'package:scaffold_project/Service/ExpensesInstallmentsService.dart';
@@ -16,6 +19,7 @@ enum ServiceType {
   financeConfigService,
   expensesService,
   expensesInstallmentsService,
+  categoryService,
 }
 
 class ServiceFactory {
@@ -29,6 +33,8 @@ class ServiceFactory {
         return ExpenseSservice();
       case ServiceType.expensesInstallmentsService:
         return ExpensesInstallmentsService();
+      case ServiceType.categoryService:
+        return CategoryService();
       default:
         throw Exception('Service type not supported');
     }
@@ -39,7 +45,8 @@ enum RepositoryType {
   configUserRepository,
   configFinanceRepository,
   expensesRepositories,
-  expensesInstallmentsRepositories
+  expensesInstallmentsRepositories,
+  categoryRepository,
 }
 
 class RepositoryFactory {
@@ -53,6 +60,9 @@ class RepositoryFactory {
         return ExpensesRepositorie(_sqFlite.getDataBase());
       case RepositoryType.expensesInstallmentsRepositories:
         return ExpensesInstallmentsRepositories(_sqFlite.getDataBase());
+
+      case RepositoryType.categoryRepository:
+        return Categoryrepository(DioInstance.dio());
       default:
         throw Exception('Repository type not supported');
     }

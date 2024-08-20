@@ -26,7 +26,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-
     //..._financialViewModel.getListItens["widget"] as Widget
     constructList();
     return Column(
@@ -36,9 +35,19 @@ class _HomeState extends State<Home> {
           child: Container(
             height: 100,
             // color: primaryColor,
-            child: ListView(
-              // children: [...constructList()],
-              children:[ for (int i = 0; i < _financialViewModel.getListItens.length; i++) _financialViewModel.getListItens[i].item ],
+            child: RefreshIndicator(
+              onRefresh: () async {
+                print('Ao executar essa função, deverá recarregar os itens');
+              },
+              child: ListView(
+                // children: [...constructList()],
+                children: [
+                  for (int i = 0;
+                      i < _financialViewModel.getListItens.length;
+                      i++)
+                    _financialViewModel.getListItens[i].item
+                ],
+              ),
             ),
           ),
         )

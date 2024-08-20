@@ -14,6 +14,7 @@ class ExpenseDTO {
   int userId;
   int? expenseInstallmentId;
   int year;
+  int idCategory;
   //metodos
 
   ExpenseDTO({
@@ -26,6 +27,7 @@ class ExpenseDTO {
     required this.date,
     required this.isDivided,
     required this.userId,
+    required this.idCategory,
     this.prestacoes,
     this.parcela,
     this.expenseInstallmentId,
@@ -33,21 +35,21 @@ class ExpenseDTO {
 
   factory ExpenseDTO.fromJSON(Map<String, dynamic> json) {
     return ExpenseDTO(
-        year: int.parse(json["year"].toString()),
-        expenseInstallmentId:
-            int.tryParse(json['id_despesas_parceladas'].toString()),
-        userId: int.parse(json['id_user'].toString()),
-        isDivided: bool.parse(json["is_divided"].toString()),
-        date: DateTime.parse(json["date"].toString()),
-        hash: json["hash"],
-        descricaoDespesa: json["descriptionSpent"] ?? json["descricao_despesa"],
-        month: int.parse(json["month"].toString()),
-        parcela: int.parse(json["parcela"].toString()), //pode dar erro
-        prestacoes:
-            double.parse(json["prestacoes"].toString()), //possível erro,
-        tipoDespesa: json["tipo_despesa"],
-        valorGasto:
-            double.parse(json["valor_gasto"].toString())); //pode dar erro
+      year: int.parse(json["year"].toString()),
+      expenseInstallmentId:
+          int.tryParse(json['id_despesas_parceladas'].toString()),
+      userId: int.parse(json['id_user'].toString()),
+      isDivided: bool.parse(json["is_divided"].toString()),
+      date: DateTime.parse(json["date"].toString()),
+      hash: json["hash"],
+      descricaoDespesa: json["descriptionSpent"] ?? json["descricao_despesa"],
+      month: int.parse(json["month"].toString()),
+      parcela: int.parse(json["parcela"].toString()), //pode dar erro
+      prestacoes: double.parse(json["prestacoes"].toString()), //possível erro,
+      tipoDespesa: json["tipo_despesa"],
+      valorGasto: double.parse(json["valor_gasto"].toString()),
+      idCategory: int.parse(json["id_category"].toString()),
+    ); //pode dar erro
   }
 
   Map<String, dynamic> toJSON() {
@@ -63,7 +65,8 @@ class ExpenseDTO {
       "date": Global.getDate().toString(),
       "id_user": userId,
       "id_despesas_parceladas": expenseInstallmentId,
-      "year": year
+      "year": year,
+      "category_id": idCategory
     };
   }
 }

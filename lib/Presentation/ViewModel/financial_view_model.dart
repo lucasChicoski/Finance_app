@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Aplication/Configs/FinanceApplication.dart';
 import 'package:scaffold_project/Aplication/Financial/ExpensiveApplication.dart';
 import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
+import 'package:scaffold_project/Presentation/ViewModel/category_view_model.dart';
 import 'package:scaffold_project/Presentation/Widgets/item_list/item_list.dart';
 import 'package:scaffold_project/Domain/Models/ListItemModel.dart';
 import 'package:scaffold_project/Utils/functions_helpers.dart';
@@ -10,6 +12,8 @@ import 'package:uuid/v4.dart';
 
 FinanceApplication financeApplication = FinanceApplication();
 ExpensiveApplication expensiveApplication = ExpensiveApplication();
+
+CategoryViewModel _categoryViewModel = GetIt.I<CategoryViewModel>();
 
 class FinancialViewModel extends ChangeNotifier {
   String currentDate = "";
@@ -30,6 +34,7 @@ class FinancialViewModel extends ChangeNotifier {
   String waySpend = "";
   String descriptionSpent = "";
   double valueSpent = 0;
+  int categorySpent = 0;
 
   setCurrentDate(String value) {
     currentDate = value;
@@ -151,7 +156,8 @@ class FinancialViewModel extends ChangeNotifier {
       "date": Global.getDate().toString(),
       "is_divided": isDivided.toString(),
       "id_user": 1.toString(), //Utilizar padrão de cache.
-      "id_despesas_parceladas": expenseInstallmentId.toString()
+      "id_despesas_parceladas": expenseInstallmentId.toString(),
+      "id_category": _categoryViewModel.selectedCategory.toString()
     };
 
     try {
@@ -173,6 +179,7 @@ class FinancialViewModel extends ChangeNotifier {
     setWaySpent("");
     setDescriptionSpent("");
     setValueSpent("");
+    _categoryViewModel.setSelectedCategory(0);
 
     notifyListeners();
 

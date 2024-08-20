@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:scaffold_project/Domain/DTO/CategoryDTO.dart';
 import 'package:scaffold_project/Presentation/Components/buttons/elevated_button_custom.dart';
 import 'package:scaffold_project/Presentation/Components/drop_down/DropDownCustom.dart';
 import 'package:scaffold_project/Presentation/Components/text_input/text_input_custom.dart';
+import 'package:scaffold_project/Presentation/ViewModel/category_view_model.dart';
 import 'package:scaffold_project/Presentation/ViewModel/financial_view_model.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 
 FinancialViewModel _financialViewModel = GetIt.I<FinancialViewModel>();
+CategoryViewModel _categoryViewModel = GetIt.I<CategoryViewModel>();
 
 class RegisterSpentNotDivided extends StatelessWidget {
   const RegisterSpentNotDivided({super.key});
@@ -24,7 +27,12 @@ class RegisterSpentNotDivided extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  DropDownCustom(),
+                  DropDownCustom(
+                    listItens: CategoryDTO.toListDropMenu(
+                        _categoryViewModel.listCategories),
+                    onSelected: (value) =>
+                        {_categoryViewModel.setSelectedCategory(value!)},
+                  ),
                   SizedBox(
                     height: 10,
                   ),
