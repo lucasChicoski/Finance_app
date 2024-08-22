@@ -74,7 +74,7 @@ class PreLoader {
     _categoryViewModel.setListCategories(result);
     print(_categoryViewModel.listCategories);
   }
-
+  
   static Future allCall() async {
     await getUserInf();
     await getFinanceInf();

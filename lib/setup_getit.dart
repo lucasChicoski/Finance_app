@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Infra/DataBase/SqFlite/sqflite.dart';
 import 'package:scaffold_project/Presentation/ViewModel/category_view_model.dart';
+import 'package:scaffold_project/Presentation/ViewModel/chart/expense_chart_view_model.dart';
 import 'package:scaffold_project/Presentation/ViewModel/config_user_view_model.dart';
 import 'package:scaffold_project/Presentation/ViewModel/financial_divided_view_model.dart';
 import 'package:scaffold_project/Presentation/ViewModel/financial_view_model.dart';
@@ -17,5 +18,6 @@ setUpGetIt() {
   getIt.registerSingleton<SQFlite>(SQFlite());
   getIt.registerSingleton<ConfigUserViewModel>(ConfigUserViewModel());
   getIt.registerSingleton<CategoryViewModel>(CategoryViewModel());
+  getIt.registerSingleton<ExpenseChartViewModel>(ExpenseChartViewModel());
   // getIt.registerSingleton<ConfigPageStore>(ConfigPageStore());
 }

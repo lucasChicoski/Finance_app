@@ -3,12 +3,15 @@ import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Infra/DataBase/SqFlite/sqflite.dart';
 import 'package:scaffold_project/Presentation/Components/buttons/outlined_button_custom.dart';
 import 'package:scaffold_project/Presentation/Pages/register_spent_not_divided.dart';
+import 'package:scaffold_project/Presentation/Pages/report.dart';
+import 'package:scaffold_project/Presentation/ViewModel/chart/expense_chart_view_model.dart';
 import 'package:scaffold_project/Presentation/ViewModel/financial_view_model.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
 FinancialViewModel _financialViewModel = GetIt.I<FinancialViewModel>();
+ExpenseChartViewModel _expenseChartViewModel = GetIt.I<ExpenseChartViewModel>();
 SQFlite sqFlite = GetIt.I<SQFlite>();
 
 class AppBarCustom extends StatefulWidget {
@@ -120,7 +123,12 @@ class _AppBarCustomState extends State<AppBarCustom> {
               OutlibedButtonCustom(
                 label: 'Relatório',
                 size: 0.40,
-                onPressed: () {},
+                onPressed: () async {
+                  await _expenseChartViewModel.groupByCategoryExpense();
+
+                  NavigationPages.navigationToPageMaterial(
+                      context, const ReportView());
+                },
               ),
             ],
           ),
