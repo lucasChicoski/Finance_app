@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Infra/DataBase/SqFlite/sqflite.dart';
+import 'package:scaffold_project/Presentation/Pages/login.dart';
 // import 'package:scaffold_project/Presentation/ViewModel/financial_view_model.dart';
 import 'package:scaffold_project/Presentation/ViewModel/navigation_view_model.dart';
 import 'package:scaffold_project/Utils/Routers.dart';
 import 'package:scaffold_project/Utils/preloader.dart';
 // import 'package:scaffold_project/Utils/size_config.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
-import 'package:scaffold_project/Presentation/Widgets/Nav_Bottom/nav_bottom.dart';
-import 'package:scaffold_project/Presentation/list_screen.dart';
+// import 'package:scaffold_project/Presentation/Widgets/Nav_Bottom/nav_bottom.dart';
+// import 'package:scaffold_project/Presentation/list_screen.dart';
 import 'package:scaffold_project/setup_getit.dart';
 
 NavigationViewModel _navigationViewModel = GetIt.I<NavigationViewModel>();
@@ -76,9 +77,10 @@ class _MainAppState extends State<MainApp> {
       routes: listRouters,
       home: Scaffold(
         resizeToAvoidBottomInset: true,
-        backgroundColor: primaryColor,
-        bottomNavigationBar: const NavBottom(),
-        body: listScreen[_navigationViewModel.index],
+        backgroundColor: Color(0xffF5F5F5),
+        // bottomNavigationBar: const NavBottom(),
+        // body: listScreen[_navigationViewModel.index],
+        body: LoginScreen(),
         // listScreen[_navigationViewModel.index],
       ),
     );
