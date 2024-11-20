@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 // import 'package:scaffold_project/Presentation/Pages/login.dart';
-import 'package:scaffold_project/Presentation/ViewModel/navigation_view_model.dart';
+import 'package:scaffold_project/Presentation/store/navigation_store.dart';
 import 'package:scaffold_project/Presentation/Widgets/Nav_Bottom/nav_bottom.dart';
 import 'package:scaffold_project/Presentation/list_screen.dart';
 import 'package:scaffold_project/Utils/Routers.dart';

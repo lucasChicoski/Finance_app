@@ -3,8 +3,8 @@ import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Presentation/Components/Labels/TextLabel.dart';
 import 'package:scaffold_project/Presentation/Components/chart/PizzaChart.dart';
 import 'package:scaffold_project/Presentation/Components/spaces/Spaces.dart';
-import 'package:scaffold_project/Presentation/ViewModel/chart/expense_chart_view_model.dart';
-import 'package:scaffold_project/Presentation/ViewModel/financial_view_model.dart';
+import 'package:scaffold_project/Presentation/store/chart/expense_chart_store.dart';
+import 'package:scaffold_project/Presentation/store/financial_store.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 
 ExpenseChartViewModel _expenseChartViewModel = GetIt.I<ExpenseChartViewModel>();
@@ -16,11 +16,11 @@ class ReportView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff7f7f7),
+      backgroundColor: const Color(0xfff7f7f7),
       appBar: AppBar(
-        backgroundColor: Color(0xfff7f7f7),
+        backgroundColor: const Color(0xfff7f7f7),
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Estatísticas',
           style: TextStyle(
               fontSize: 25,
@@ -31,7 +31,7 @@ class ReportView extends StatelessWidget {
       // backgroundColor: Colors.amber,
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.only(left: 20, right: 20),
+          margin: const EdgeInsets.only(left: 20, right: 20),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -70,7 +70,7 @@ class ReportView extends StatelessWidget {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Color(0xffffffff),
+                    color: const Color(0xffffffff),
                   ),
                   child: _expenseChartViewModel
                           .hasDataListDatagroupByCategoryExpense
@@ -78,7 +78,7 @@ class ReportView extends StatelessWidget {
                           data: _expenseChartViewModel
                               .listDatagroupByCategoryExpense,
                         )
-                      : Textlabel(
+                      : const Textlabel(
                           text: 'Você não possu dados para o relatório!',
                         ),
                 ),

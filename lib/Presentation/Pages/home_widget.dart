@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:scaffold_project/Presentation/ViewModel/financial_view_model.dart';
+import 'package:scaffold_project/Presentation/store/financial_store.dart';
 import 'package:scaffold_project/Presentation/Widgets/App_Bar/app_bar_custom.dart';
 import 'package:scaffold_project/Presentation/Widgets/item_list/item_list.dart';
 
@@ -30,9 +30,9 @@ class _HomeState extends State<Home> {
     constructList();
     return Column(
       children: [
-        AppBarCustom(), //Mudar para dentro do construct list
+        const AppBarCustom(), //Mudar para dentro do construct list
         Expanded(
-          child: Container(
+          child: SizedBox(
             height: 100,
             // color: primaryColor,
             child: RefreshIndicator(

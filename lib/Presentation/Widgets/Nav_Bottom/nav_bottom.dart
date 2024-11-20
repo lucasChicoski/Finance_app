@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Presentation/Components/icons/icon_nav_bottom.dart';
-import 'package:scaffold_project/Presentation/ViewModel/navigation_view_model.dart';
+import 'package:scaffold_project/Presentation/store/navigation_store.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
 NavigationViewModel _navigationViewModel = GetIt.I<NavigationViewModel>();

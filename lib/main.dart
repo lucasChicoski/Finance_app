@@ -6,7 +6,7 @@ import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Infra/DataBase/SqFlite/sqflite.dart';
 import 'package:scaffold_project/Presentation/Pages/login.dart';
 // import 'package:scaffold_project/Presentation/ViewModel/financial_view_model.dart';
-import 'package:scaffold_project/Presentation/ViewModel/navigation_view_model.dart';
+import 'package:scaffold_project/Presentation/store/navigation_store.dart';
 import 'package:scaffold_project/Utils/Routers.dart';
 import 'package:scaffold_project/Utils/preloader.dart';
 // import 'package:scaffold_project/Utils/size_config.dart';
@@ -75,7 +75,7 @@ class _MainAppState extends State<MainApp> {
           textTheme: TextTheme(bodyLarge: TextStyle(color: terciaryColor))),
       debugShowCheckedModeBanner: false,
       routes: listRouters,
-      home: Scaffold(
+      home: const Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: Color(0xffF5F5F5),
         // bottomNavigationBar: const NavBottom(),

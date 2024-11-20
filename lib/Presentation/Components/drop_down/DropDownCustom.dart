@@ -12,18 +12,18 @@ class DropDownCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownMenu(
       width: MQueryCustom(context, type: 'w', porcent: 0.9),
-      textStyle: TextStyle(color: Colors.black),
+      textStyle: const TextStyle(color: Colors.black),
       hintText: 'Categorias',
       onSelected: onSelected,
       inputDecorationTheme: InputDecorationTheme(
-          contentPadding: EdgeInsets.only(left: 10),
-          border: OutlineInputBorder(
+          contentPadding: const EdgeInsets.only(left: 10),
+          border: const OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.all(Radius.circular(10))),
           filled: true,
           fillColor: Colors.grey.withOpacity(0.5),
           isCollapsed: true,
-          hintStyle: TextStyle(color: Colors.black26)),
+          hintStyle: const TextStyle(color: Colors.black26)),
       dropdownMenuEntries: [
         for (int i = 0; i < listItens.length; i++)
           DropdownMenuEntry(

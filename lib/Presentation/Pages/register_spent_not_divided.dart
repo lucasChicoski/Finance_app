@@ -4,8 +4,8 @@ import 'package:scaffold_project/Domain/DTO/CategoryDTO.dart';
 import 'package:scaffold_project/Presentation/Components/buttons/elevated_button_custom.dart';
 import 'package:scaffold_project/Presentation/Components/drop_down/DropDownCustom.dart';
 import 'package:scaffold_project/Presentation/Components/text_input/text_input_custom.dart';
-import 'package:scaffold_project/Presentation/ViewModel/category_view_model.dart';
-import 'package:scaffold_project/Presentation/ViewModel/financial_view_model.dart';
+import 'package:scaffold_project/Presentation/store/category_store.dart';
+import 'package:scaffold_project/Presentation/store/financial_store.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 
 FinancialViewModel _financialViewModel = GetIt.I<FinancialViewModel>();
@@ -21,7 +21,7 @@ class RegisterSpentNotDivided extends StatelessWidget {
       child: Scaffold(
         body: SafeArea(
           child: Center(
-            child: Container(
+            child: SizedBox(
               width: MQueryCustom(context, type: "w", porcent: 0.9),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -33,20 +33,20 @@ class RegisterSpentNotDivided extends StatelessWidget {
                     onSelected: (value) =>
                         {_categoryViewModel.setSelectedCategory(value!)},
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   TextInputCustom(
                     hint: "Tipo de despesa",
                     onChange: _financialViewModel.setWaySpent,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   TextInputCustom(
                       hint: "Descrição",
                       onChange: _financialViewModel.setDescriptionSpent),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   TextInputCustom(
@@ -54,7 +54,7 @@ class RegisterSpentNotDivided extends StatelessWidget {
                       textType: TextInputType.number,
                       prefixText: "R\$ ",
                       onChange: _financialViewModel.setValueSpent),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   ElevatedButtonCustom(

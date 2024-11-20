@@ -52,7 +52,7 @@ class _MonthlyExpensesState extends State<MonthlyExpenses> {
                 ElevatedButtonCustom(
                     label: 'Cadastrar Despesa',
                     onPressed: () {
-                      NavigationPages.navigationToPageMaterial(context, RegisterSpentDived());
+                      NavigationPages.navigationToPageMaterial(context, const RegisterSpentDived());
                     }),
                 const SizedBox(
                   height: 50,

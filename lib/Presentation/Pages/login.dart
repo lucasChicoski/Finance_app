@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scaffold_project/Presentation/Components/text_input/text_input_custom.dart';
+import 'package:scaffold_project/Presentation/Pages/sign_in.dart';
 import 'package:scaffold_project/Presentation/main_page.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
@@ -21,12 +22,12 @@ class LoginScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 100,
                 ),
-                Container(
+                SizedBox(
                   width: 228,
-                  child: Text(
+                  child: const Text(
                     'Faça seu login',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -38,12 +39,12 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Container(
+                SizedBox(
                   width: 228,
-                  child: Text(
+                  child: const Text(
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     'Bem vindo de volta! Você fez muita falta.',
@@ -57,24 +58,24 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 100,
                 ),
-                Container(
+                SizedBox(
                   width: MQueryCustom(context, type: 'w', porcent: 0.8),
                   child: Column(
                     children: [
-                      TextInputCustom(
+                      const TextInputCustom(
                         backGroundColor: Color(0xfff1f4ff),
                         label: Text('Cpf'),
                       ),
-                      SizedBox(height: 20),
-                      TextInputCustom(
+                      const SizedBox(height: 20),
+                      const TextInputCustom(
                         backGroundColor: Color(0xfff1f4ff),
                         label: Text('Senha'),
                       ),
-                      SizedBox(height: 20),
-                      Align(
+                      const SizedBox(height: 20),
+                      const Align(
                           alignment: Alignment.centerRight,
                           child: Text(
                             'Esqueceu sua senha?',
@@ -84,19 +85,17 @@ class LoginScreen extends StatelessWidget {
                                 fontSize: 15,
                                 color: Color(0xff1F41BB)),
                           )),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       SizedBox(
                         width: MQueryCustom(context, type: 'w', porcent: 1),
                         child: ElevatedButton(
                           onPressed: () {
                             NavigationPages.navigationToPageMaterial(
-                                context, MainPage());
+                                context, const MainPage());
                           },
-                          child: Text('Entrar',
-                              style: TextStyle(color: Colors.white)),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xff1f41bb),
-                            padding: EdgeInsets.symmetric(
+                            backgroundColor: const Color(0xff1f41bb),
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 40,
                                 vertical: 16), // Tamanho do botão
                             shape: RoundedRectangleBorder(
@@ -104,18 +103,23 @@ class LoginScreen extends StatelessWidget {
                                   10), // Borda arredondada
                             ),
                           ),
+                          child: Text('Entrar',
+                              style: TextStyle(color: Colors.white)),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Align(
                           alignment: Alignment.center,
-                          child: Text(
+                          child: TextButton(onPressed: () {
+                             NavigationPages.navigationToPageMaterial(
+                                context, const SignIn());
+                          }, child: const Text(
                             'Criar uma conta',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
                                 color: Color(0xff494949)),
-                          )),
+                          ))),
                     ],
                   ),
                 )
@@ -127,3 +131,8 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
+/**
+ * 
+ * 
+ */

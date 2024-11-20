@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Presentation/Components/buttons/elevated_button_custom.dart';
 import 'package:scaffold_project/Presentation/Components/text_input/text_input_custom.dart';
-import 'package:scaffold_project/Presentation/ViewModel/financial_divided_view_model.dart';
+import 'package:scaffold_project/Presentation/store/financial_divided_store.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
@@ -19,16 +19,16 @@ class RegisterSpentDived extends StatelessWidget {
       backgroundColor: primaryColor,
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(10),
-          margin: EdgeInsets.only(right: 20, top: 50),
+          padding: const EdgeInsets.all(10),
+          margin: const EdgeInsets.only(right: 20, top: 50),
           decoration: BoxDecoration(
             color: secundaryColor,
-            borderRadius: BorderRadius.only(topRight: Radius.circular(30), bottomRight: Radius.circular(30))
+            borderRadius: const BorderRadius.only(topRight: Radius.circular(30), bottomRight: Radius.circular(30))
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               const Align(
@@ -38,7 +38,7 @@ class RegisterSpentDived extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextInputCustom(
@@ -47,7 +47,7 @@ class RegisterSpentDived extends StatelessWidget {
                 digitInputUserColor: Colors.white,
                 onChange: _financialDividedViewModel.setDescription,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextInputCustom(
@@ -56,7 +56,7 @@ class RegisterSpentDived extends StatelessWidget {
                   textType: TextInputType.number,
                   digitInputUserColor: Colors.white,
                   onChange: _financialDividedViewModel.setValueSpent),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextInputCustom(
@@ -65,7 +65,7 @@ class RegisterSpentDived extends StatelessWidget {
                   hintColor: Colors.white.withAlpha(100),
                   digitInputUserColor: Colors.white,
                   onChange: _financialDividedViewModel.setQParcela),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -82,7 +82,7 @@ class RegisterSpentDived extends StatelessWidget {
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Flexible(

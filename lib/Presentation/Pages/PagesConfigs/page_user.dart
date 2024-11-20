@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Presentation/Components/Cards/card_inputs.dart';
 import 'package:scaffold_project/Presentation/Components/buttons/elevated_button_custom.dart';
-import 'package:scaffold_project/Presentation/ViewModel/config_user_view_model.dart';
+import 'package:scaffold_project/Presentation/store/config_user_store.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';

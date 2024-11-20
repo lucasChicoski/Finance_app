@@ -14,7 +14,7 @@ class ElevatedButtonCustom extends StatelessWidget {
       width: MQueryCustom(context, type: 'w', porcent: size ?? 1),
       child: ElevatedButton(
         style: ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(quartaryColro)),
+            backgroundColor: WidgetStatePropertyAll(quartaryColro)),
         onPressed: onPressed,
         child: Text(
           label,

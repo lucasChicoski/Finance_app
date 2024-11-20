@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Aplication/Configs/FinanceApplication.dart';
 import 'package:scaffold_project/Aplication/Financial/ExpensiveApplication.dart';
 import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
-import 'package:scaffold_project/Presentation/ViewModel/category_view_model.dart';
+import 'package:scaffold_project/Presentation/store/category_store.dart';
 import 'package:scaffold_project/Presentation/Widgets/item_list/item_list.dart';
 import 'package:scaffold_project/Domain/Models/ListItemModel.dart';
 import 'package:scaffold_project/Utils/functions_helpers.dart';

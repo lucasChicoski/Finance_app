@@ -13,8 +13,8 @@ class IconNavBottom extends StatelessWidget {
     return IconButton(
         onPressed: function,
         icon: Icon(
-          this.icon,
-          color: this.color,
+          icon,
+          color: color,
         ));
   }
 }

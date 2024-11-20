@@ -15,7 +15,7 @@ class PopUpRegisterNewSpent {
     return showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        content: Container(
+        content: SizedBox(
           height: MQueryCustom(context, type: 'h', porcent: 0.4),
           width: MQueryCustom(context, type: 'w'),
           child: Column(

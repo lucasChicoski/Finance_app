@@ -8,10 +8,10 @@ import 'package:scaffold_project/Domain/DTO/CategoryDTO.dart';
 import 'package:scaffold_project/Domain/DTO/ExpenseInstallmentDTO.dart';
 import 'package:scaffold_project/Domain/DTO/FinanceConfigDTO.dart';
 import 'package:scaffold_project/Domain/Models/UserConfigModel.dart';
-import 'package:scaffold_project/Presentation/ViewModel/category_view_model.dart';
-import 'package:scaffold_project/Presentation/ViewModel/config_user_view_model.dart';
-import 'package:scaffold_project/Presentation/ViewModel/financial_divided_view_model.dart';
-import 'package:scaffold_project/Presentation/ViewModel/financial_view_model.dart';
+import 'package:scaffold_project/Presentation/store/category_store.dart';
+import 'package:scaffold_project/Presentation/store/config_user_store.dart';
+import 'package:scaffold_project/Presentation/store/financial_divided_store.dart';
+import 'package:scaffold_project/Presentation/store/financial_store.dart';
 
 ConfigUserViewModel _configUserViewModel = GetIt.I<ConfigUserViewModel>();
 FinancialViewModel _financialViewModel = GetIt.I<FinancialViewModel>();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:scaffold_project/Presentation/ViewModel/financial_divided_view_model.dart';
+import 'package:scaffold_project/Presentation/store/financial_divided_store.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
 FinancialDividedViewModel _financialDividedViewModel =
@@ -36,7 +36,7 @@ class _TableWidgetState extends State<TableWidget> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Text('Lista de Despesas',
@@ -44,7 +44,7 @@ class _TableWidgetState extends State<TableWidget> {
                   color: quartaryColro,
                   fontWeight: FontWeight.bold,
                   fontSize: 20)),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Container(
@@ -56,13 +56,13 @@ class _TableWidgetState extends State<TableWidget> {
               children: [RowHeader.header()],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Table(
             children: [..._financialDividedViewModel.listExpansive],
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
         ],

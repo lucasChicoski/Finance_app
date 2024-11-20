@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Aplication/Financial/ExpensesInstallmentsApplication.dart';
 import 'package:scaffold_project/Domain/DTO/ExpenseInstallmentDTO.dart';
-import 'package:scaffold_project/Presentation/ViewModel/financial_view_model.dart';
+import 'package:scaffold_project/Presentation/store/financial_store.dart';
 import 'package:scaffold_project/Presentation/Widgets/table/table_windget.dart';
 import 'package:scaffold_project/Utils/functions_helpers.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';

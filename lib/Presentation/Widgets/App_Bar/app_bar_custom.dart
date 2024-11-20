@@ -4,8 +4,8 @@ import 'package:scaffold_project/Infra/DataBase/SqFlite/sqflite.dart';
 import 'package:scaffold_project/Presentation/Components/buttons/outlined_button_custom.dart';
 import 'package:scaffold_project/Presentation/Pages/register_spent_not_divided.dart';
 import 'package:scaffold_project/Presentation/Pages/report.dart';
-import 'package:scaffold_project/Presentation/ViewModel/chart/expense_chart_view_model.dart';
-import 'package:scaffold_project/Presentation/ViewModel/financial_view_model.dart';
+import 'package:scaffold_project/Presentation/store/chart/expense_chart_store.dart';
+import 'package:scaffold_project/Presentation/store/financial_store.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
@@ -90,17 +90,17 @@ class _AppBarCustomState extends State<AppBarCustom> {
                   height: 15,
                 ),
                 AnimatedOpacity(
-                  duration: Duration(seconds: 1),
+                  duration: const Duration(seconds: 1),
                   opacity: _financialViewModel.showWarningSaveMoney ? 1.0 : 0.0,
                   child: Visibility(
                       visible: _financialViewModel.showWarningSaveMoney,
                       child: Container(
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             color: Colors.white),
                         child:
-                            Text("Você ultrapassou sua cota de gastos no mês"),
+                            const Text("Você ultrapassou sua cota de gastos no mês"),
                       )),
                 )
               ],

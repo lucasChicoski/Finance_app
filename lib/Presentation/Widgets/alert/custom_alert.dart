@@ -9,7 +9,7 @@ alert(BuildContext context, {String item = ''}) {
   return showDialog(
     context: context,
     builder: (BuildContext context) => AlertDialog(
-      content: Container(
+      content: SizedBox(
         height: MQueryCustom(context, type: 'h', porcent: 0.4),
         width: MQueryCustom(context, type: 'w'),
         child: Column(
@@ -24,23 +24,23 @@ alert(BuildContext context, {String item = ''}) {
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
-                  'Descrição: ' + item,
+                  'Descrição: $item',
                   style: TextStyle(
                       color: secundaryColor,
                       fontSize: 15,
                       fontWeight: FontWeight.w300),
                 ),
-                SizedBox(height: 30),
-                TextInputCustom(
+                const SizedBox(height: 30),
+                const TextInputCustom(
                     hint: 'Valor do gasto',
                     prefix: Icon(Icons.attach_money),
                     textType: TextInputType.number),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                TextInputCustom(
+                const TextInputCustom(
                     textType: TextInputType.text,
                     hint: 'Descrição do gasto',
                     prefix: Icon(
@@ -55,7 +55,7 @@ alert(BuildContext context, {String item = ''}) {
                   size: sizeButton,
                   onPressed: (){},
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 ElevatedButtonCustom(label: 'Atualizar', size: sizeButton, onPressed: (){},),
               ],
             )

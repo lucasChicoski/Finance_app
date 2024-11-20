@@ -28,7 +28,7 @@ void main() {
     try {
       await database.openDataBase(database.pathDatabase);
     } catch (e) {
-      print('banco não inicializado' + database.pathDatabase);
+      print('banco não inicializado${database.pathDatabase}');
     }
   });
 
