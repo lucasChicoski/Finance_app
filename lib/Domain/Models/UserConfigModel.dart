@@ -5,6 +5,9 @@ class UserConfigmodel {
   String? birthDate;
   String? email;
   String? phoneNumber;
+  String? cpf;
+  String? passwd;
+
 
   UserConfigmodel(Map<String, dynamic> data) {
     name = data['nome'];
@@ -12,5 +15,7 @@ class UserConfigmodel {
     birthDate = data['data_nascimento'];
     email = data['email'];
     phoneNumber = data['telefone'];
+    cpf = data['cpf'];
+    passwd = data['passwd'];
   }
 }

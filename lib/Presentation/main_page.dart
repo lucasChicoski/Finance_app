@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 // import 'package:scaffold_project/Presentation/Pages/login.dart';
@@ -21,19 +17,19 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-
   @override
   void initState() {
     _navigationViewModel.addListener(() {
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     });
     super.initState();
   }
-  
 
   @override
   Widget build(BuildContext context) {
-     return MaterialApp(
+    return MaterialApp(
       theme: ThemeData(
           textTheme: TextTheme(bodyLarge: TextStyle(color: terciaryColor))),
       debugShowCheckedModeBanner: false,

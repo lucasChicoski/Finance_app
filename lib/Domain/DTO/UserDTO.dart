@@ -5,13 +5,17 @@ class UserDTO {
   String? birthDate;
   String? email;
   String? phoneNumber;
+  String? cpf;
+  String? passwd;
 
   UserDTO({
     this.id,
     this.name,
     this.lastName,
-    this.birthDate,
+    this.cpf,
     this.email,
+    this.passwd,
+    this.birthDate,
     this.phoneNumber,
   });
 
@@ -23,6 +27,8 @@ class UserDTO {
       birthDate: json["birthDate"],
       email: json["email"],
       phoneNumber: json["phoneNumber"],
+      cpf: json["cpf"],
+      passwd: json["passwd"],
     );
   }
 
@@ -34,6 +40,8 @@ class UserDTO {
       'birthDate': birthDate,
       'email': email,
       'phoneNumber': phoneNumber,
+      'cpf': cpf,
+      'passwd': passwd
     };
   }
 }

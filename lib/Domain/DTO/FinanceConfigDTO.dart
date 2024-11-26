@@ -20,4 +20,6 @@ class FinanceConfigDTO {
       "guarde_dinheiro": saveMoney ?? 0
     };
   }
+
+  
 }

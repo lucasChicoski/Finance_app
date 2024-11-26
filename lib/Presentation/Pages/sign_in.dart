@@ -27,6 +27,23 @@ class _SignInState extends State<SignIn> {
   }
 
   @override
+  void initState() {
+    _siginStore.addListener(() {
+      if (mounted) {
+        setState(() {});
+      }
+    });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _siginStore.disposeVariables();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -88,19 +105,22 @@ class _SignInState extends State<SignIn> {
                         backGroundColor: Color(0xfff1f4ff),
                         label: Text('Sobrenome'),
                         onChange: _siginStore.setSobrenome,
+                        errorText: _siginStore.validSobrenome,
                       ),
                       const SizedBox(height: 20),
                       TextInputCustom(
                         backGroundColor: Color(0xfff1f4ff),
-                        label: Text('Cpf'),
-                        mask: '###.###.###-##',
+                        label: Text('CPF'),
+                        mask: "###.###.###-##",
                         onChange: _siginStore.setCpf,
+                        errorText: _siginStore.validCPF,
                       ),
                       const SizedBox(height: 20),
                       TextInputCustom(
                         backGroundColor: Color(0xfff1f4ff),
                         label: Text('email'),
                         onChange: _siginStore.setEmail,
+                        errorText: _siginStore.validEmail,
                       ),
                       const SizedBox(height: 20),
                       TextInputCustom(
@@ -117,7 +137,7 @@ class _SignInState extends State<SignIn> {
                       TextInputCustom(
                         backGroundColor: Color(0xfff1f4ff),
                         label: Text('Confirme a senha'),
-                        errorText: _siginStore.validPasswd ? null : 'oi',
+                        errorText: _siginStore.validPasswd,
                         obscureText: hidePassword,
                         onChange: _siginStore.setRepeatPassword,
                       ),

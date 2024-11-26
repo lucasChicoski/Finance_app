@@ -4,22 +4,22 @@ import 'package:scaffold_project/Infra/Repositories/config_repositories/user/con
 import 'package:scaffold_project/Utils/IOC.dart';
 
 class UserConfigService {
-  Future<UserConfigmodel> getInfUserService() async {
-    ConfigUserRepository configUserRepository =
-        RepositoryFactory.getRepository(RepositoryType.configUserRepository);
+  final ConfigUserRepository _repo =
+      RepositoryFactory.getRepository(RepositoryType.configUserRepository);
 
-    var user = await configUserRepository.getInfUser(1);
+  Future<UserConfigmodel> getInfUserService() async {
+    var user = await _repo.getInfUser(1);
     UserConfigmodel userConfInf = UserConfigmodel(user);
     return userConfInf;
   }
 
   Future<UserConfigmodel> updateInfUserService(UserDTO value) async {
-    ConfigUserRepository configUserRepository =
-        RepositoryFactory.getRepository(RepositoryType.configUserRepository);
-
-    var result = await configUserRepository.updateInfUser(value);
-
+    var result = await _repo.updateInfUser(value);
     UserConfigmodel userConfInf = UserConfigmodel(result);
     return userConfInf;
+  }
+
+  Future<UserConfigmodel> createUser(UserDTO value) async {
+    return await _repo.createUser(value);
   }
 }

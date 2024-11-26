@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:scaffold_project/Aplication/Configs/UserApplication.dart';
+import 'package:scaffold_project/shared/regex.dart';
 
 class SiginStore extends ChangeNotifier {
+  final UserApplication _userApplication = UserApplication();
   String nome = '';
   String sobrenome = '';
   String email = '';
@@ -17,43 +20,68 @@ class SiginStore extends ChangeNotifier {
       password.isNotEmpty &&
       repeatPassword.isNotEmpty;
 
-  bool get validPasswd => password == repeatPassword;
+  dynamic get validPasswd =>
+      password == repeatPassword || repeatPassword.isEmpty
+          ? null
+          : "Senhas diferentes";
+  dynamic get validCPF =>
+      cpf.length == 14 || cpf.isEmpty ? null : "CPF inválido";
+  dynamic get validname =>
+      nome.length >= 3 || nome.isEmpty ? null : "Nome inválido";
+  dynamic get validSobrenome =>
+      sobrenome.length >= 3 || sobrenome.isEmpty ? null : "Sobrenome inválido";
+  dynamic get validEmail =>
+      isValidEmail(email) || email.isEmpty ? null : "Email inválido";
+
+  bool get validEmailBool => isValidEmail(email);
 
   setName(String value) {
     nome = value;
-    notifyListeners();
   }
 
   setSobrenome(String value) {
     sobrenome = value;
-    notifyListeners();
   }
 
   setEmail(String value) {
     email = value;
-    notifyListeners();
   }
 
   setCpf(String value) {
     cpf = value;
-    notifyListeners();
   }
 
   setPassword(String value) {
     password = value;
-    notifyListeners();
   }
 
   setRepeatPassword(String value) {
     repeatPassword = value;
-    notifyListeners();
   }
 
-  handleSubmit() {
-    if (validForm && validPasswd) {
-      print('Sucesso');
+  handleSubmit() async {
+    notifyListeners();
+
+    if (validForm && repeatPassword == password && validEmailBool) {
+      Map<String, String> newUser = {
+        "nome": nome,
+        "lastName": sobrenome,
+        "email": email,
+        "cpf": cpf,
+        "passwd": password
+      };
+      await _userApplication.createUser(newUser);
     } else {
       print('Erro');
     }
+  }
+
+  disposeVariables() {
+    nome = '';
+    sobrenome = '';
+    email = '';
+    cpf = '';
+    password = '';
+    repeatPassword = '';
   }
 }

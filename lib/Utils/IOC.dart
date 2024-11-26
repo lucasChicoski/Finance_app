@@ -1,6 +1,4 @@
-import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Global/dio_instance.dart';
-import 'package:scaffold_project/Infra/DataBase/SqFlite/sqflite.dart';
 import 'package:scaffold_project/Infra/Repositories/category/CategoryRepository.dart';
 import 'package:scaffold_project/Infra/Repositories/chart/expense_queries/ExpensesQueries..dart';
 import 'package:scaffold_project/Infra/Repositories/config_repositories/finance/config_finance_repository.dart';
@@ -14,7 +12,7 @@ import 'package:scaffold_project/Service/Configs/UserConfigService.dart';
 import 'package:scaffold_project/Service/ExpensesInstallmentsService.dart';
 import 'package:scaffold_project/Service/ExpensesService.dart';
 
-SQFlite _sqFlite = GetIt.I<SQFlite>();
+// SQFlite _sqFlite = GetIt.I<SQFlite>();
 
 enum ServiceType {
   userConfigService,
@@ -59,13 +57,13 @@ class RepositoryFactory {
   static dynamic getRepository(RepositoryType type) {
     switch (type) {
       case RepositoryType.configUserRepository:
-        return ConfigUserRepository(_sqFlite.getDataBase());
+        return ConfigUserRepository(DioInstance.dio());
       case RepositoryType.configFinanceRepository:
-        return ConfigFinanceRepository(_sqFlite.getDataBase());
+        return ConfigFinanceRepository(DioInstance.dio());
       case RepositoryType.expensesRepositories:
-        return ExpensesRepositorie(_sqFlite.getDataBase());
+        return ExpensesRepositorie(DioInstance.dio());
       case RepositoryType.expensesInstallmentsRepositories:
-        return ExpensesInstallmentsRepositories(_sqFlite.getDataBase());
+        return ExpensesInstallmentsRepositories(DioInstance.dio());
       case RepositoryType.categoryRepository:
         return Categoryrepository(DioInstance.dio());
       case RepositoryType.expenseQueries:

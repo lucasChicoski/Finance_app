@@ -1,19 +1,19 @@
+import 'package:dio/dio.dart';
 import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
-import 'package:scaffold_project/Global/dio_instance.dart';
 import 'package:scaffold_project/Infra/Repositories/expenses_repositorie/IExpensesRepository.dart';
-import 'package:sqflite/sqflite.dart';
+
 
 class ExpensesRepositorie implements IExpensesRepository {
-  // late Database _database;
+  late Dio _dio;
 
-  ExpensesRepositorie(Database database) {
-    // _database = database;
+  ExpensesRepositorie(Dio dio) {
+    _dio = dio;
   }
 
   @override
   Future deleteExpense(String hash) async {
-    var result = await DioInstance.dio()
-        .post('/delete-expense', data: {"hash_expense": hash});
+    var result =
+        await _dio.post('/delete-expense', data: {"hash_expense": hash});
 
     // var result =
     //     _database.rawDelete('DELETE FROM despesas WHERE hash = "$hash";');
@@ -22,8 +22,7 @@ class ExpensesRepositorie implements IExpensesRepository {
 
   @override
   Future getExpense() async {
-    var result =
-        await DioInstance.dio().post('/get-expense', data: {"user_id": 1});
+    var result = await _dio.post('/get-expense', data: {"user_id": 1});
 
     // var result = await _database.rawQuery(
     //     'SELECT * FROM despesas WHERE id_usuario = 1 ORDER BY date DESC');
@@ -33,8 +32,7 @@ class ExpensesRepositorie implements IExpensesRepository {
   @override
   Future insertExpense(ExpenseDTO value) async {
     try {
-      var result = await DioInstance.dio()
-          .post('/register-expense', data: value.toJSON());
+      var result = await _dio.post('/register-expense', data: value.toJSON());
 
       // _database.transaction((db) async {
       //   db.rawInsert("""

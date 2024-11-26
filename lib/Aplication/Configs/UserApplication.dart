@@ -4,24 +4,23 @@ import 'package:scaffold_project/Service/Configs/UserConfigService.dart';
 import 'package:scaffold_project/Utils/IOC.dart';
 
 class UserApplication {
+  final UserConfigService _service =
+      ServiceFactory.getService(ServiceType.userConfigService);
+
   Future getInfUser() async {
-    UserConfigService userConfigService =
-        ServiceFactory.getService(ServiceType.userConfigService);
-
-    UserConfigmodel userConfigmodel =
-        await userConfigService.getInfUserService();
-
+    UserConfigmodel userConfigmodel = await _service.getInfUserService();
     return userConfigmodel;
   }
 
   Future updateInfUser(Map<String, dynamic> value) async {
-    UserConfigService userConfigService =
-        ServiceFactory.getService(ServiceType.userConfigService);
-
     UserDTO userDTO = UserDTO.fromJson(value);
-
     UserConfigmodel userConfigmodel =
-        await userConfigService.updateInfUserService(userDTO);
+        await _service.updateInfUserService(userDTO);
     return userConfigmodel;
+  }
+
+  Future createUser(Map<String, String> value) async {
+    UserDTO userDTO = UserDTO.fromJson(value);
+    await _service.createUser(userDTO);
   }
 }
