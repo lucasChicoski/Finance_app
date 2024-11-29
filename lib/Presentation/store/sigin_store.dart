@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scaffold_project/Aplication/Configs/UserApplication.dart';
+import 'package:scaffold_project/Global/Enum/StatusText.dart';
+import 'package:scaffold_project/Global/dio_response.dart';
 import 'package:scaffold_project/shared/regex.dart';
 
 class SiginStore extends ChangeNotifier {
@@ -68,9 +70,12 @@ class SiginStore extends ChangeNotifier {
         "lastName": sobrenome,
         "email": email,
         "cpf": cpf,
-        "passwd": password
+        "passwd": password,
       };
-      await _userApplication.createUser(newUser);
+      DioResponse response = await _userApplication.createUser(newUser);
+
+      if (response.statusText == Statustext.SUCCESS.value) {
+      } else {}
     } else {
       print('Erro');
     }

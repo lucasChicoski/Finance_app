@@ -14,7 +14,7 @@ void main(List<String> args) async {
   setUpGetIt();
   runApp(const MainApp());
 
-  await PreLoader.allCall();
+  // await PreLoader.allCall();
 }
 
 class MainApp extends StatefulWidget {

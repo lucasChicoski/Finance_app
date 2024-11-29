@@ -19,7 +19,7 @@ class UserConfigService {
     return userConfInf;
   }
 
-  Future<UserConfigmodel> createUser(UserDTO value) async {
+  Future createUser(UserDTO value) async {
     return await _repo.createUser(value);
   }
 }

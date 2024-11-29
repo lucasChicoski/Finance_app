@@ -21,6 +21,6 @@ class UserApplication {
 
   Future createUser(Map<String, String> value) async {
     UserDTO userDTO = UserDTO.fromJson(value);
-    await _service.createUser(userDTO);
+    return await _service.createUser(userDTO);
   }
 }
