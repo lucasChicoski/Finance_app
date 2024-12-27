@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scaffold_project/Aplication/Configs/UserApplication.dart';
+import 'package:scaffold_project/Controller/Configs/UserApplication.dart';
 
 class ConfigUserViewModel extends ChangeNotifier {
   //Atributes

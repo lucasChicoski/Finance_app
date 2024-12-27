@@ -8,7 +8,7 @@ import 'package:scaffold_project/Presentation/store/category_store.dart';
 import 'package:scaffold_project/Presentation/store/financial_store.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 
-FinancialViewModel _financialViewModel = GetIt.I<FinancialViewModel>();
+FinancialStore _financialStore = GetIt.I<FinancialStore>();
 CategoryViewModel _categoryViewModel = GetIt.I<CategoryViewModel>();
 
 class RegisterSpentNotDivided extends StatelessWidget {
@@ -38,14 +38,14 @@ class RegisterSpentNotDivided extends StatelessWidget {
                   ),
                   TextInputCustom(
                     hint: "Tipo de despesa",
-                    onChange: _financialViewModel.setWaySpent,
+                    onChange: _financialStore.setWaySpent,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   TextInputCustom(
                       hint: "Descrição",
-                      onChange: _financialViewModel.setDescriptionSpent),
+                      onChange: _financialStore.setDescriptionSpent),
                   const SizedBox(
                     height: 10,
                   ),
@@ -53,17 +53,17 @@ class RegisterSpentNotDivided extends StatelessWidget {
                       hint: "Valor gasto",
                       textType: TextInputType.number,
                       prefixText: "R\$ ",
-                      onChange: _financialViewModel.setValueSpent),
+                      onChange: _financialStore.setValueSpent),
                   const SizedBox(
                     height: 10,
                   ),
                   ElevatedButtonCustom(
                       label: "Registrar",
                       onPressed: () {
-                        _financialViewModel.addExpense(
-                            _financialViewModel.waySpend,
-                            _financialViewModel.descriptionSpent,
-                            _financialViewModel.valueSpent,
+                        _financialStore.addExpense(
+                            _financialStore.waySpend,
+                            _financialStore.descriptionSpent,
+                            _financialStore.valueSpent,
                             context);
                       })
                 ],

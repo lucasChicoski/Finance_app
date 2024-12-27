@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:scaffold_project/Aplication/Financial/ExpensesInstallmentsApplication.dart';
+import 'package:scaffold_project/Controller/Financial/ExpensesInstallmentsApplication.dart';
 import 'package:scaffold_project/Domain/DTO/ExpenseInstallmentDTO.dart';
 import 'package:scaffold_project/Presentation/store/financial_store.dart';
 import 'package:scaffold_project/Presentation/Widgets/table/table_windget.dart';
 import 'package:scaffold_project/Utils/functions_helpers.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 
-FinancialViewModel _financialViewModel = GetIt.I<FinancialViewModel>();
+FinancialStore _financialStore = GetIt.I<FinancialStore>();
 ExpensesInstallmentsApplication _expensesInstallmentsApplication =
     ExpensesInstallmentsApplication();
 
@@ -76,7 +76,7 @@ class FinancialDividedViewModel extends ChangeNotifier {
             .row());
 
     for (var i = 0; i < qParcela; i++) {
-      await _financialViewModel.addExpense(
+      await _financialStore.addExpense(
         'Despesa parcelada',
         '$description - Parcela $i',
         valueSpent,

@@ -7,7 +7,7 @@ import 'package:scaffold_project/Utils/navigation_class.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
-FinancialViewModel _financialViewModel = GetIt.I<FinancialViewModel>();
+FinancialStore _financialStore = GetIt.I<FinancialStore>();
 
 class PageFinancial extends StatelessWidget {
   const PageFinancial({super.key});
@@ -39,8 +39,8 @@ class PageFinancial extends StatelessWidget {
                           ),
                           CardInput(
                             conttroller: TextEditingController(
-                                text: _financialViewModel.getRendaToString),
-                            onChange: _financialViewModel.setRenda,
+                                text: _financialStore.getRendaToString),
+                            onChange: _financialStore.setRenda,
                             label: "Renda",
                             hint: "Digite sua renda",
                           ),
@@ -49,8 +49,8 @@ class PageFinancial extends StatelessWidget {
                           ),
                           CardInput(
                             conttroller: TextEditingController(
-                                text: _financialViewModel.getSaveMoneyToString),
-                            onChange: _financialViewModel.setSaveMoney,
+                                text: _financialStore.getSaveMoneyToString),
+                            onChange: _financialStore.setSaveMoney,
                             label: "Guarde seu dinheiro",
                             hint: "Quanto deseja guardar por mês",
                           ),
@@ -61,7 +61,7 @@ class PageFinancial extends StatelessWidget {
                     child: ElevatedButtonCustom(
                       label: "Salvar",
                       onPressed: () {
-                        _financialViewModel.calculateBalance(_financialViewModel.listValues);
+                        _financialStore.calculateBalance(_financialStore.listValues);
                         NavigationPages.pop(context);
                       },
                     ),

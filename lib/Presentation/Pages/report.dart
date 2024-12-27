@@ -8,7 +8,7 @@ import 'package:scaffold_project/Presentation/store/financial_store.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 
 ExpenseChartViewModel _expenseChartViewModel = GetIt.I<ExpenseChartViewModel>();
-FinancialViewModel _financialViewModel = GetIt.I<FinancialViewModel>();
+FinancialStore _financialStore = GetIt.I<FinancialStore>();
 
 class ReportView extends StatelessWidget {
   const ReportView({super.key});
@@ -52,7 +52,7 @@ class ReportView extends StatelessWidget {
                             TextStyle(fontSize: 20, color: Color(0xff343434)),
                       ),
                       Text(
-                        '${_financialViewModel.balanceValue}',
+                        '${_financialStore.balanceValue}',
                         style: const TextStyle(
                             fontSize: 35,
                             fontWeight: FontWeight.bold,

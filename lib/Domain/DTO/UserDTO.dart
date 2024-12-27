@@ -1,3 +1,7 @@
+import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
+import 'package:scaffold_project/Domain/DTO/ExpenseInstallmentDTO.dart';
+import 'package:scaffold_project/Domain/DTO/FinanceConfigDTO.dart';
+
 class UserDTO {
   int? id;
   String? name;
@@ -7,6 +11,9 @@ class UserDTO {
   String? phoneNumber;
   String? cpf;
   String? passwd;
+  List<ExpenseDTO>? despesas;
+  List<ExpenseInstallmentDTO>? despesasParceladas;
+  FinanceConfigDTO? config;
 
   UserDTO({
     this.id,
@@ -23,7 +30,7 @@ class UserDTO {
     return UserDTO(
       id: json["id"],
       name: json["nome"],
-      lastName: json["lastName"],
+      lastName: json["lastName"] ?? json["sobrenome"],
       birthDate: json["birthDate"],
       email: json["email"],
       phoneNumber: json["phoneNumber"],
@@ -43,5 +50,17 @@ class UserDTO {
       'cpf': cpf,
       'passwd': passwd
     };
+  }
+
+  setExpenses(List<ExpenseDTO> despesas) {
+    this.despesas = despesas;
+  }
+
+  setInstallments(List<ExpenseInstallmentDTO> despesasParceladas) {
+    this.despesasParceladas = despesasParceladas;
+  }
+
+  setConfig(FinanceConfigDTO config) {
+    this.config = config;
   }
 }

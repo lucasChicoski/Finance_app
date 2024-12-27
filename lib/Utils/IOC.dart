@@ -1,4 +1,5 @@
 import 'package:scaffold_project/Global/dio_instance.dart';
+import 'package:scaffold_project/Infra/Repositories/AuthRepository.dart';
 import 'package:scaffold_project/Infra/Repositories/category/CategoryRepository.dart';
 import 'package:scaffold_project/Infra/Repositories/chart/expense_queries/ExpensesQueries..dart';
 import 'package:scaffold_project/Infra/Repositories/config_repositories/finance/config_finance_repository.dart';
@@ -11,6 +12,7 @@ import 'package:scaffold_project/Service/Configs/FinanceConfigService.dart';
 import 'package:scaffold_project/Service/Configs/UserConfigService.dart';
 import 'package:scaffold_project/Service/ExpensesInstallmentsService.dart';
 import 'package:scaffold_project/Service/ExpensesService.dart';
+import 'package:scaffold_project/Service/auth_service.dart';
 
 // SQFlite _sqFlite = GetIt.I<SQFlite>();
 
@@ -21,6 +23,7 @@ enum ServiceType {
   expensesInstallmentsService,
   categoryService,
   expenseQueriesService,
+  authService
 }
 
 class ServiceFactory {
@@ -38,6 +41,8 @@ class ServiceFactory {
         return CategoryService();
       case ServiceType.expenseQueriesService:
         return ExpensesQueriesService();
+      case ServiceType.authService:
+        return AuthService();
       default:
         throw Exception('Service type not supported');
     }
@@ -51,6 +56,7 @@ enum RepositoryType {
   expensesInstallmentsRepositories,
   categoryRepository,
   expenseQueries,
+  authRepository
 }
 
 class RepositoryFactory {
@@ -68,6 +74,8 @@ class RepositoryFactory {
         return Categoryrepository(DioInstance.dio());
       case RepositoryType.expenseQueries:
         return ExpensesQueriesRepository(DioInstance.dio());
+      case RepositoryType.authRepository:
+        return Authrepository(DioInstance.dio());
       default:
         throw Exception('Repository type not supported');
     }

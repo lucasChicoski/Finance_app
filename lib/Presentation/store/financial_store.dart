@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:scaffold_project/Aplication/Configs/FinanceApplication.dart';
-import 'package:scaffold_project/Aplication/Financial/ExpensiveApplication.dart';
+import 'package:scaffold_project/Controller/Configs/FinanceApplication.dart';
+import 'package:scaffold_project/Controller/Financial/ExpensiveApplication.dart';
 import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
 import 'package:scaffold_project/Presentation/store/category_store.dart';
 import 'package:scaffold_project/Presentation/Widgets/item_list/item_list.dart';
@@ -15,7 +15,7 @@ ExpensiveApplication expensiveApplication = ExpensiveApplication();
 
 CategoryViewModel _categoryViewModel = GetIt.I<CategoryViewModel>();
 
-class FinancialViewModel extends ChangeNotifier {
+class FinancialStore extends ChangeNotifier {
   String currentDate = "";
   UuidV4 uuid = const UuidV4();
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scaffold_project/Aplication/Configs/UserApplication.dart';
+import 'package:scaffold_project/Controller/Configs/UserApplication.dart';
 import 'package:scaffold_project/Global/Enum/StatusText.dart';
 import 'package:scaffold_project/Global/dio_response.dart';
 import 'package:scaffold_project/shared/regex.dart';

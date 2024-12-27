@@ -15,7 +15,7 @@ class DioResponse {
       data: json['data'],
       message: json['message'],
       statusText: json['statusText'],
-      statusCode: json['statusCode'],
+      statusCode: json['statusCode'] ?? json['status'],
     );
   }
 }

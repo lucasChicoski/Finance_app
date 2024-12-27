@@ -4,7 +4,6 @@ import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Presentation/Pages/login.dart';
 import 'package:scaffold_project/Presentation/store/navigation_store.dart';
 import 'package:scaffold_project/Utils/Routers.dart';
-import 'package:scaffold_project/Utils/preloader.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 import 'package:scaffold_project/setup_getit.dart';
 

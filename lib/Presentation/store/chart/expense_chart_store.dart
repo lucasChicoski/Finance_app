@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:scaffold_project/Aplication/Chart/expenses_queires/ExpenseQueries.dart';
+import 'package:scaffold_project/Controller/Chart/expenses_queires/ExpenseQueries.dart';
 import 'package:scaffold_project/Domain/DTO/ChartFilterDTO.dart';
 import 'package:scaffold_project/Domain/Models/charts/PieChartModel.dart';
 import 'package:scaffold_project/Service/Charts/ExpensesQueriesService.dart';

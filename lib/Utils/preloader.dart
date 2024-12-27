@@ -1,9 +1,9 @@
 import 'package:get_it/get_it.dart';
-import 'package:scaffold_project/Aplication/Category.dart';
-import 'package:scaffold_project/Aplication/Configs/FinanceApplication.dart';
-import 'package:scaffold_project/Aplication/Configs/UserApplication.dart';
-import 'package:scaffold_project/Aplication/Financial/ExpensesInstallmentsApplication.dart';
-import 'package:scaffold_project/Aplication/Financial/ExpensiveApplication.dart';
+import 'package:scaffold_project/Controller/Category.dart';
+import 'package:scaffold_project/Controller/Configs/FinanceApplication.dart';
+import 'package:scaffold_project/Controller/Configs/UserApplication.dart';
+import 'package:scaffold_project/Controller/Financial/ExpensesInstallmentsApplication.dart';
+import 'package:scaffold_project/Controller/Financial/ExpensiveApplication.dart';
 import 'package:scaffold_project/Domain/DTO/CategoryDTO.dart';
 import 'package:scaffold_project/Domain/DTO/ExpenseInstallmentDTO.dart';
 import 'package:scaffold_project/Domain/DTO/FinanceConfigDTO.dart';
@@ -14,7 +14,7 @@ import 'package:scaffold_project/Presentation/store/financial_divided_store.dart
 import 'package:scaffold_project/Presentation/store/financial_store.dart';
 
 ConfigUserViewModel _configUserViewModel = GetIt.I<ConfigUserViewModel>();
-FinancialViewModel _financialViewModel = GetIt.I<FinancialViewModel>();
+FinancialStore _financialStore = GetIt.I<FinancialStore>();
 FinancialDividedViewModel _dividedViewModel =
     GetIt.I<FinancialDividedViewModel>();
 CategoryViewModel _categoryViewModel = GetIt.I<CategoryViewModel>();
@@ -43,18 +43,18 @@ class PreLoader {
     FinanceApplication financeApplication = FinanceApplication();
     FinanceConfigDTO result = await financeApplication.getFinanceConfigInf();
 
-    _financialViewModel.setRenda(result.renda.toString());
-    _financialViewModel.setSaveMoney(result.saveMoney.toString());
-    _financialViewModel.setBalance(result.balance ?? 0);
+    _financialStore.setRenda(result.renda.toString());
+    _financialStore.setSaveMoney(result.saveMoney.toString());
+    _financialStore.setBalance(result.balance ?? 0);
 
-    _financialViewModel.calculateBalance(_financialViewModel.listValues);
+    _financialStore.calculateBalance(_financialStore.listValues);
   }
 
   static Future getExpenses() async {
     ExpensiveApplication expensiveApplication = ExpensiveApplication();
     List<Map> result = await expensiveApplication.getExpense();
 
-    _financialViewModel.loadList(result);
+    _financialStore.loadList(result);
     //Trabalhar com a viewModel ou popular a lista.
   }
 

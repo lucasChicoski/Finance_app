@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Presentation/Components/text_input/text_input_custom.dart';
 import 'package:scaffold_project/Presentation/Pages/sign_in.dart';
-import 'package:scaffold_project/Presentation/main_page.dart';
+
+import 'package:scaffold_project/Presentation/store/auth_store.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 
@@ -9,6 +11,8 @@ import 'package:scaffold_project/Utils/size_config.dart';
 /// 1 Element - Align - topCenter
 /// 2 SingleChildScrillView
 /// 3 Column
+
+AuthStore _authStore = GetIt.I<AuthStore>();
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -65,14 +69,16 @@ class LoginScreen extends StatelessWidget {
                   width: MQueryCustom(context, type: 'w', porcent: 0.8),
                   child: Column(
                     children: [
-                      const TextInputCustom(
+                      TextInputCustom(
                         backGroundColor: Color(0xfff1f4ff),
-                        label: Text('Cpf'),
+                        onChange: _authStore.setCpf,
+                        label: const Text('Cpf'),
                       ),
                       const SizedBox(height: 20),
-                      const TextInputCustom(
+                      TextInputCustom(
                         backGroundColor: Color(0xfff1f4ff),
-                        label: Text('Senha'),
+                        onChange: _authStore.setPasswd,
+                        label: const Text('Senha'),
                       ),
                       const SizedBox(height: 20),
                       const Align(
@@ -90,8 +96,9 @@ class LoginScreen extends StatelessWidget {
                         width: MQueryCustom(context, type: 'w', porcent: 1),
                         child: ElevatedButton(
                           onPressed: () {
-                            NavigationPages.navigationToPageMaterial(
-                                context, const MainPage());
+                            _authStore.submit(context);
+                            // NavigationPages.navigationToPageMaterial(
+                            //     context, const MainPage());
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xff1f41bb),
@@ -103,23 +110,27 @@ class LoginScreen extends StatelessWidget {
                                   10), // Borda arredondada
                             ),
                           ),
-                          child: Text('Entrar',
-                              style: TextStyle(color: Colors.white)),
+                          child: Text(
+                            'Entrar',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),
                       Align(
                           alignment: Alignment.center,
-                          child: TextButton(onPressed: () {
-                             NavigationPages.navigationToPageMaterial(
-                                context, const SignIn());
-                          }, child: const Text(
-                            'Criar uma conta',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                                color: Color(0xff494949)),
-                          ))),
+                          child: TextButton(
+                              onPressed: () {
+                                NavigationPages.navigationToPageMaterial(
+                                    context, const SignIn());
+                              },
+                              child: const Text(
+                                'Criar uma conta',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                    color: Color(0xff494949)),
+                              ))),
                     ],
                   ),
                 )

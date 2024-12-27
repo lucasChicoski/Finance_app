@@ -10,7 +10,7 @@ import 'package:scaffold_project/Utils/navigation_class.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
-FinancialViewModel _financialViewModel = GetIt.I<FinancialViewModel>();
+FinancialStore _financialStore = GetIt.I<FinancialStore>();
 ExpenseChartViewModel _expenseChartViewModel = GetIt.I<ExpenseChartViewModel>();
 SQFlite sqFlite = GetIt.I<SQFlite>();
 
@@ -24,7 +24,7 @@ class AppBarCustom extends StatefulWidget {
 class _AppBarCustomState extends State<AppBarCustom> {
   @override
   void initState() {
-    _financialViewModel.addListener(() {
+    _financialStore.addListener(() {
       //Verifica se o widget está montado para dar um setState na página
       if (mounted) {
         setState(() {});
@@ -57,7 +57,7 @@ class _AppBarCustomState extends State<AppBarCustom> {
                   color: quartaryColro,
                   fontWeight: FontWeight.w800,
                   fontSize: 25)),
-          Text('R\$ ${_financialViewModel.getRendaToString}',
+          Text('R\$ ${_financialStore.getRendaToString}',
               style: TextStyle(
                   fontWeight: FontWeight.w800,
                   color: quartaryColro,
@@ -80,7 +80,7 @@ class _AppBarCustomState extends State<AppBarCustom> {
                         color: secundaryColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 35)),
-                Text('R\$ ${_financialViewModel.getBalance}',
+                Text('R\$ ${_financialStore.getBalance}',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: secundaryColor,
@@ -91,9 +91,9 @@ class _AppBarCustomState extends State<AppBarCustom> {
                 ),
                 AnimatedOpacity(
                   duration: const Duration(seconds: 1),
-                  opacity: _financialViewModel.showWarningSaveMoney ? 1.0 : 0.0,
+                  opacity: _financialStore.showWarningSaveMoney ? 1.0 : 0.0,
                   child: Visibility(
-                      visible: _financialViewModel.showWarningSaveMoney,
+                      visible: _financialStore.showWarningSaveMoney,
                       child: Container(
                         padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(

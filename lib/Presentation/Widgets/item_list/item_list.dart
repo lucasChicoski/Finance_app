@@ -5,7 +5,7 @@ import 'package:scaffold_project/Presentation/store/financial_store.dart';
 import 'package:scaffold_project/Presentation/Widgets/alert/custom_alert.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
-FinancialViewModel _financialViewModel = GetIt.I<FinancialViewModel>();
+FinancialStore _financialStore = GetIt.I<FinancialStore>();
 
 class ItemListWidget extends StatelessWidget {
   final Color? color;
@@ -82,7 +82,7 @@ class ItemListWidget extends StatelessWidget {
                     )),
                 IconButton(
                     onPressed: () {
-                      _financialViewModel.deleteExpense(id);
+                      _financialStore.deleteExpense(id);
                     },
                     icon: Icon(
                       Icons.delete,
