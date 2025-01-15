@@ -18,6 +18,7 @@ class ConfigFinanceRepository implements IConfigFinanceRepository {
   @override
   Future saveConfigFinance(FinanceConfigDTO financeConfig) async {
     //Implementar salvar financeiro
+    var result = await _dio.post('/update-finance-config', data: financeConfig.toJSON());
 
     return FinanceConfigDTO(balance: 0, renda: 0, saveMoney: 0).toJSON();
   }

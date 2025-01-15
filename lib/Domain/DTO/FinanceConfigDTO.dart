@@ -9,15 +9,16 @@ class FinanceConfigDTO {
     return FinanceConfigDTO(
       balance: double.parse(json['balance'].toString()),
       renda: double.parse(json['renda'].toString()),
-      saveMoney: double.parse(json['guarde_dinheiro'].toString()),
+      saveMoney: double.parse(json['guarde_dinheiro']?.toString() ?? json['save_money'].toString()),
     );
   }
 
   Map<String, dynamic> toJSON() {
     return {
+      "userId": 6, //Trazer dinamico
       "balance": balance ?? 0,
       "renda": renda ?? 0,
-      "guarde_dinheiro": saveMoney ?? 0
+      "save_money": saveMoney ?? 0
     };
   }
 

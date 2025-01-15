@@ -44,13 +44,13 @@ class _ExpenseListState extends State<ExpenseList> {
                         'Ao executar essa função, deverá recarregar os itens');
                   },
                   child: ListView(
-                    children: [...constructList()],
-                    // children: [
-                    //   for (int i = 0;
-                    //       i < _financialStore.getListItens.length;
-                    //       i++)
-                    //     _financialStore.getListItens[i].item
-                    // ],
+                    // children: [...constructList()],
+                    children: [
+                      for (int i = 0;
+                          i < _financialStore.getListItens.length;
+                          i++)
+                        _financialStore.getListItens[i].item
+                    ],
                   ),
                 ),
               ),

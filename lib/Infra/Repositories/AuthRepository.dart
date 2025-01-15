@@ -14,7 +14,7 @@ class Authrepository implements IAuthInterface {
     final response = await _dio.post('/auth', data: value.toJson());
 
     return DioResponse(
-      data: response.data['data'],
+      data: response.data['data'],  
       message: response.data['message'],
       statusCode: response.statusCode!, // response.data['status'],
       statusText: response.data['statusText'],

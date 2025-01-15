@@ -1,6 +1,7 @@
 import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
 import 'package:scaffold_project/Domain/DTO/ExpenseInstallmentDTO.dart';
 import 'package:scaffold_project/Domain/DTO/FinanceConfigDTO.dart';
+import 'package:scaffold_project/Domain/Models/DespesasParceladas.dart';
 
 class UserDTO {
   int? id;
@@ -14,6 +15,7 @@ class UserDTO {
   List<ExpenseDTO>? despesas;
   List<ExpenseInstallmentDTO>? despesasParceladas;
   FinanceConfigDTO? config;
+  List<DespesasAgrupadas>? despesasAgrupadas;
 
   UserDTO({
     this.id,
@@ -24,6 +26,7 @@ class UserDTO {
     this.passwd,
     this.birthDate,
     this.phoneNumber,
+    this.despesasAgrupadas
   });
 
   factory UserDTO.fromJson(Map<String, dynamic> json) {
@@ -63,4 +66,9 @@ class UserDTO {
   setConfig(FinanceConfigDTO config) {
     this.config = config;
   }
+
+  setDespesasAgrupadas(List<DespesasAgrupadas> despesasAgrupadas) {
+    this.despesasAgrupadas = despesasAgrupadas;
+  }
+
 }

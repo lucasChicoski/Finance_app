@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Controller/Configs/FinanceApplication.dart';
 import 'package:scaffold_project/Controller/Financial/ExpensiveApplication.dart';
 import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
+import 'package:scaffold_project/Domain/Models/DespesasParceladas.dart';
 import 'package:scaffold_project/Presentation/store/category_store.dart';
 import 'package:scaffold_project/Presentation/Widgets/item_list/item_list.dart';
 import 'package:scaffold_project/Domain/Models/ListItemModel.dart';
@@ -63,6 +64,48 @@ class FinancialStore extends ChangeNotifier {
 
   setBalance(double value) {
     balanceValue = value;
+  }
+
+  setListItensByLogin(List<DespesasAgrupadas> listIensByLogin) {
+    if (listIensByLogin.isEmpty) {
+      listItens.add(ListItemModel(
+          TitleList(
+            title: 'Janeiro',
+          ),
+          ""));
+
+      return;
+    }
+
+    for (var year in listIensByLogin) {
+      for (var month in year.month) {
+         listItens.add(ListItemModel(
+          TitleList(
+            title: "${Global.defineMonth(month.mes)} - ${year.ano}",
+          ),
+            ""));
+
+          for (var itens in month.itens) {
+                listItens.add(ListItemModel(
+      ItemListWidget(
+                  waySpent: itens.tipoDespesa,
+                  descriptionSpent: itens.descricaoDespesa,
+                  valueSpent: itens.valorGasto,
+                  id: itens.hash),
+              itens.hash
+              ));
+}       
+          }
+      } 
+      
+    //   listItens.add(ListItemModel(
+    //       ItemListWidget(
+    //           waySpent: element.tipoDespesa,
+    //           descriptionSpent: element.descricaoDespesa,
+    //           valueSpent: element.valorGasto,
+    //           id: element.hash),
+    //       element.hash));
+    // }
   }
 
   updateDespesasCadastradas(List value) {
@@ -155,9 +198,10 @@ class FinancialStore extends ChangeNotifier {
       "tipo_despesa": waySpent,
       "date": Global.getDate().toString(),
       "is_divided": isDivided.toString(),
-      "id_user": 1.toString(), //Utilizar padrão de cache.
+      "id_user": 6.toString(), //Utilizar padrão de cache.
       "id_despesas_parceladas": expenseInstallmentId.toString(),
-      "id_category": _categoryViewModel.selectedCategory.toString()
+      "id_category":
+          1.toString(), //_categoryViewModel.selectedCategory.toString()
     };
 
     try {

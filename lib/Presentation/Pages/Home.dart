@@ -17,7 +17,9 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     _navigationViewModel.addListener(() {
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     });
 
     // TODO: implement initState

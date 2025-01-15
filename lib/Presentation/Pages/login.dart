@@ -73,6 +73,7 @@ class LoginScreen extends StatelessWidget {
                         backGroundColor: Color(0xfff1f4ff),
                         onChange: _authStore.setCpf,
                         label: const Text('Cpf'),
+                        mask: '###.###.###-##',
                       ),
                       const SizedBox(height: 20),
                       TextInputCustom(
