@@ -5,6 +5,7 @@ import 'package:scaffold_project/Domain/DTO/AuthDTO.dart';
 import 'package:scaffold_project/Domain/DTO/UserDTO.dart';
 import 'package:scaffold_project/Global/Returns/ReturnService.dart';
 import 'package:scaffold_project/Presentation/Pages/Home.dart';
+import 'package:scaffold_project/Presentation/Widgets/alert/simple_toast.dart';
 import 'package:scaffold_project/Presentation/store/financial_store.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 
@@ -14,15 +15,14 @@ class AuthStore extends ChangeNotifier {
   final _authC = AuthController();
   late UserDTO user;
 
-  String cpf = '';
-  String passwd = '';
+  String cpf = '127.312.277-10';
+  String passwd = '123';
 
   Future submit(BuildContext context) async {
-    final response = await _authC.login(AuthDTO(cpf: cpf, passwd: passwd))
-        as ReturnService<UserDTO?>;
+    final response = await _authC.login(AuthDTO(cpf: cpf, passwd: passwd)) as ReturnService ; 
 
     if (response.data != null) {
-      user = response.data!;
+      user = response.data as UserDTO;
 
       _financialStore.setRenda(user.config?.renda.toString() ?? '0');
       _financialStore.setBalance(user.config?.balance ?? 0);
@@ -30,8 +30,7 @@ class AuthStore extends ChangeNotifier {
       _financialStore.setListItensByLogin(user.despesasAgrupadas ?? []);
       NavigationPages.navigationToPageMaterial(context, Home());
     } else {
-      //Mostra mensagem e printa erro na tela
-      //Não deixapassar para proxima tela
+      simpleToast(context, item: 'Erro ao efetuar login');
     }
 
     notifyListeners();

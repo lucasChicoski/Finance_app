@@ -68,14 +68,18 @@ class FinancialStore extends ChangeNotifier {
 
   setListItensByLogin(List<DespesasAgrupadas> listIensByLogin) {
     if (listIensByLogin.isEmpty) {
+      final currentDate = Global.getDate();
+
       listItens.add(ListItemModel(
           TitleList(
-            title: 'Janeiro',
+            title: Global.defineMonth(currentDate.month),
           ),
           ""));
 
       return;
     }
+
+    listItens = [];
 
     for (var year in listIensByLogin) {
       for (var month in year.month) {
@@ -97,15 +101,6 @@ class FinancialStore extends ChangeNotifier {
 }       
           }
       } 
-      
-    //   listItens.add(ListItemModel(
-    //       ItemListWidget(
-    //           waySpent: element.tipoDespesa,
-    //           descriptionSpent: element.descricaoDespesa,
-    //           valueSpent: element.valorGasto,
-    //           id: element.hash),
-    //       element.hash));
-    // }
   }
 
   updateDespesasCadastradas(List value) {

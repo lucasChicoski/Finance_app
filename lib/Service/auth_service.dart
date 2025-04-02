@@ -45,14 +45,17 @@ class AuthService implements IAuthInterface {
       user.setDespesasAgrupadas(despesasAgrupadas);
       
 
-      ReturnService<UserDTO> returnService =
-          ReturnService<UserDTO>(data: user, message: result.message);
+      ReturnService<UserDTO?> returnService =
+          ReturnService<UserDTO?>(data: user, message: result.message, statusCode: result.statusCode);
 
       return returnService;
     }
 
-    ReturnService returnService =
-        ReturnService(data: null, message: result.message);
+
+
+    ReturnService<UserDTO?> returnService =
+        ReturnService<UserDTO?>(
+        data: null, message: result.message, statusCode: result.statusCode);
 
     return returnService;
   }

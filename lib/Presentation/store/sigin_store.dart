@@ -75,7 +75,7 @@ class SiginStore extends ChangeNotifier {
       DioResponse response = await _userApplication.createUser(newUser);
 
       if (response.statusText == Statustext.SUCCESS.value) {
-        int x = 1;
+        print('teste');
       } else {}
     } else {
       print('Erro');

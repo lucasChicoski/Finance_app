@@ -2,7 +2,7 @@ class DioResponse {
   dynamic data;
   String message;
   String statusText;
-  int statusCode;
+  int  statusCode;
 
   DioResponse(
       {required this.data,
@@ -15,7 +15,7 @@ class DioResponse {
       data: json['data'],
       message: json['message'],
       statusText: json['statusText'],
-      statusCode: json['statusCode'] ?? json['status'],
+      statusCode: json['status'],
     );
   }
 }
