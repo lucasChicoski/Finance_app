@@ -89,7 +89,7 @@ class FinancialStore extends ChangeNotifier {
           ),
             ""));
 
-          for (var itens in month.itens) {
+        for (var itens in month.itens) {
                 listItens.add(ListItemModel(
       ItemListWidget(
                   waySpent: itens.tipoDespesa,
