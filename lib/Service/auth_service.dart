@@ -1,5 +1,4 @@
 import 'package:scaffold_project/Domain/DTO/AuthDTO.dart';
-import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
 import 'package:scaffold_project/Domain/DTO/ExpenseInstallmentDTO.dart';
 import 'package:scaffold_project/Domain/DTO/FinanceConfigDTO.dart';
 import 'package:scaffold_project/Domain/DTO/UserDTO.dart';

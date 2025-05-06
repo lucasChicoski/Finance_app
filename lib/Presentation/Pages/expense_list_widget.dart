@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:scaffold_project/Presentation/store/financial_store.dart';
 import 'package:scaffold_project/Presentation/Widgets/App_Bar/app_bar_custom.dart';
-import 'package:scaffold_project/Presentation/Widgets/item_list/item_list.dart';
+import 'package:scaffold_project/Presentation/store/list_expense_store.dart';
 
-FinancialStore _financialStore = GetIt.I<FinancialStore>();
+
+ListExpenseStore _listExpenseStore = GetIt.I<ListExpenseStore>();
 
 class ExpenseList extends StatefulWidget {
   const ExpenseList({super.key});
@@ -16,7 +16,7 @@ class ExpenseList extends StatefulWidget {
 class _ExpenseListState extends State<ExpenseList> {
   @override
   void initState() {
-    _financialStore.addListener(() {
+    _listExpenseStore.addListener(() {
       if (mounted) {
         setState(() {});
       }
@@ -27,7 +27,7 @@ class _ExpenseListState extends State<ExpenseList> {
   @override
   Widget build(BuildContext context) {
     //..._financialStore.getListItens["widget"] as Widget
-    constructList();
+
     return MaterialApp(
       home: Scaffold(
         
@@ -44,13 +44,13 @@ class _ExpenseListState extends State<ExpenseList> {
                         'Ao executar essa função, deverá recarregar os itens');
                   },
                   child: ListView(
-                    // children: [...constructList()],
-                    children: [
-                      // for (int i = 0;
-                      //     i < _financialStore.getListItens.length;
-                      //     i++)
-                      //   _financialStore.getListItens[i].item
-                    ],
+                    children: _listExpenseStore.listExpense,
+                    // children: [
+                    //   for (int i = 0;
+                    //       i < _listExpenseStore.listExpense.length;
+                    //       i++)
+                    //     _listExpenseStore.listExpense[i]
+                    // ],
                   ),
                 ),
               ),

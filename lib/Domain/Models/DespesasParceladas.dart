@@ -1,4 +1,3 @@
-import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
 import 'package:scaffold_project/Domain/DTO/expense_v2.dart';
 
 class DespesasAgrupadas {

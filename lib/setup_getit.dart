@@ -5,6 +5,7 @@ import 'package:scaffold_project/Presentation/store/chart/expense_chart_store.da
 import 'package:scaffold_project/Presentation/store/config_user_store.dart';
 import 'package:scaffold_project/Presentation/store/financial_divided_store.dart';
 import 'package:scaffold_project/Presentation/store/financial_store.dart';
+import 'package:scaffold_project/Presentation/store/list_expense_store.dart';
 import 'package:scaffold_project/Presentation/store/navigation_store.dart';
 import 'package:scaffold_project/Presentation/store/sigin_store.dart';
 
@@ -20,4 +21,5 @@ setUpGetIt() {
   getIt.registerSingleton<ExpenseChartViewModel>(ExpenseChartViewModel());
   getIt.registerSingleton<SiginStore>(SiginStore());
   getIt.registerSingleton<AuthStore>(AuthStore());
+  getIt.registerSingleton<ListExpenseStore>(ListExpenseStore());
 }

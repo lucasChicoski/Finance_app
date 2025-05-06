@@ -6,10 +6,10 @@ import 'package:scaffold_project/Domain/DTO/UserDTO.dart';
 import 'package:scaffold_project/Global/Returns/ReturnService.dart';
 import 'package:scaffold_project/Presentation/Pages/Home.dart';
 import 'package:scaffold_project/Presentation/Widgets/alert/simple_toast.dart';
-import 'package:scaffold_project/Presentation/store/financial_store.dart';
+import 'package:scaffold_project/Presentation/store/list_expense_store.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 
-FinancialStore _financialStore = GetIt.I<FinancialStore>();
+ListExpenseStore _listExpenseStore = GetIt.I<ListExpenseStore>();
 
 class AuthStore extends ChangeNotifier {
   final _authC = AuthController();
@@ -23,7 +23,7 @@ class AuthStore extends ChangeNotifier {
 
     if (response.data != null) {
       user = response.data as UserDTO;
-
+      _listExpenseStore.constructList(user.despesasAgrupadas ?? []);
       
       NavigationPages.navigationToPageMaterial(context, Home());
     } else {

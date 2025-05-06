@@ -4,6 +4,7 @@ import 'package:scaffold_project/Infra/DataBase/SqFlite/sqflite.dart';
 import 'package:scaffold_project/Presentation/Components/buttons/outlined_button_custom.dart';
 import 'package:scaffold_project/Presentation/Pages/register_spent_not_divided.dart';
 import 'package:scaffold_project/Presentation/Pages/report.dart';
+import 'package:scaffold_project/Presentation/store/auth_store.dart';
 import 'package:scaffold_project/Presentation/store/chart/expense_chart_store.dart';
 import 'package:scaffold_project/Presentation/store/financial_store.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
@@ -13,6 +14,7 @@ import 'package:scaffold_project/Utils/theme_colors.dart';
 FinancialStore _financialStore = GetIt.I<FinancialStore>();
 ExpenseChartViewModel _expenseChartViewModel = GetIt.I<ExpenseChartViewModel>();
 SQFlite sqFlite = GetIt.I<SQFlite>();
+AuthStore _authStore = GetIt.I<AuthStore>();
 
 class AppBarCustom extends StatefulWidget {
   const AppBarCustom({super.key});
@@ -57,7 +59,7 @@ class _AppBarCustomState extends State<AppBarCustom> {
                   color: quartaryColro,
                   fontWeight: FontWeight.w800,
                   fontSize: 25)),
-          Text('R\$ ',
+          Text('R\$ ${_authStore.user.config?.renda.toString() ?? '0.00'}',
               style: TextStyle(
                   fontWeight: FontWeight.w800,
                   color: quartaryColro,
