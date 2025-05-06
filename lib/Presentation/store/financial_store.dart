@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+import 'package:scaffold_project/Controller/Configs/FinanceApplication.dart';
+import 'package:scaffold_project/Controller/Financial/ExpensiveApplication.dart';
+// import 'package:get_it/get_it.dart';
+// import 'package:scaffold_project/Presentation/store/category_store.dart';
+
+FinanceApplication financeApplication = FinanceApplication();
+ExpensiveApplication expensiveApplication = ExpensiveApplication();
+
+// CategoryViewModel _categoryViewModel = GetIt.I<CategoryViewModel>();
+
+class FinancialStore extends ChangeNotifier {
+  int idCategory = 1;
+  String data = ''; //:"2025-05-05",
+  String tipoDespesa = ''; //:"Teste",
+  String descricao = ''; //:"Playstation 5",
+  double valorGasto = 0; //:5000,
+  bool isDivided = true;
+  int quantidadeParcela = 1;
+  double parcela = 0;
+  int month = 0;
+  int year = 0;
+
+  setData(String value) {
+    List<String> newValue = value.split('/');
+    data = '${newValue[2]}-${newValue[1]}-${newValue[0]}';
+    month = int.parse(newValue[1]);
+    year = int.parse(newValue[2]);
+  }
+
+  setCategory(String value) {
+    idCategory = int.parse(value);
+  }
+
+  setTipoDespesa(String value) {
+    tipoDespesa = value;
+  }
+
+  setDescricao(String value) {
+    print(value);
+    descricao = value;
+  }
+
+  setValorGasto(String value) {
+    valorGasto = double.parse(value);
+    parcela = double.parse(value);
+  }
+}
