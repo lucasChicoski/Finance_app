@@ -1,16 +1,18 @@
-import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
+import 'package:scaffold_project/Domain/DTO/expense_v2.dart';
 import 'package:scaffold_project/Service/ExpensesService.dart';
 import 'package:scaffold_project/Utils/IOC.dart';
 
 class ExpensiveApplication {
-  Future insertExpense(Map<String, String> json) async {
-    ExpenseDTO financialNotDevidedDTO = ExpenseDTO.fromJSON(json);
+  Future insertExpense(Map<String, dynamic> json) async {
+    // ExpenseDTO financialNotDevidedDTO = ExpenseDTO.fromJSON(json);
+
+    Expensev2DTO expenseV2 = Expensev2DTO.fromJSON(json);
 
     ExpenseSservice expenseSservice =
         await ServiceFactory.getService(ServiceType.expensesService);
 
-    ExpenseDTO result =
-        await expenseSservice.insertExpense(financialNotDevidedDTO);
+    Expensev2DTO result =
+        await expenseSservice.insertExpense(expenseV2);
 
     return result;
   }

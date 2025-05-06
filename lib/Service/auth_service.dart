@@ -3,6 +3,7 @@ import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
 import 'package:scaffold_project/Domain/DTO/ExpenseInstallmentDTO.dart';
 import 'package:scaffold_project/Domain/DTO/FinanceConfigDTO.dart';
 import 'package:scaffold_project/Domain/DTO/UserDTO.dart';
+import 'package:scaffold_project/Domain/DTO/expense_v2.dart';
 import 'package:scaffold_project/Domain/Models/DespesasParceladas.dart';
 import 'package:scaffold_project/Global/Returns/ReturnService.dart';
 import 'package:scaffold_project/Global/dio_response.dart';
@@ -21,7 +22,7 @@ class AuthService implements IAuthInterface {
 
     if (result.statusCode == 200) {
       final user = UserDTO.fromJson(result.data);
-      List<ExpenseDTO> despesas = [];
+      List<Expensev2DTO> despesas = [];
       List<ExpenseInstallmentDTO> despesasParceladas = [];
       List<DespesasAgrupadas> despesasAgrupadas = [];
       final financeConfig =
@@ -32,7 +33,7 @@ class AuthService implements IAuthInterface {
       });
 
       result.data["Despesas"].forEach((element) {
-        despesas.add(ExpenseDTO.fromJSON(element));
+        despesas.add(Expensev2DTO.fromJSON(element));
       });
 
       result.data["despesasAgrupadas"].forEach((element) {

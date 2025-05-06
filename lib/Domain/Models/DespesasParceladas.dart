@@ -1,4 +1,5 @@
 import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
+import 'package:scaffold_project/Domain/DTO/expense_v2.dart';
 
 class DespesasAgrupadas {
   int ano = 0;
@@ -21,14 +22,14 @@ class DespesasAgrupadas {
 
 class ItensMeses {
   int mes = 0;
-  List<ExpenseDTO> itens = [];
+  List<Expensev2DTO> itens = [];
 
 
   ItensMeses(dynamic value){
       mes = value["mes"];
 
       for (var element in value["itens"]) {
-        itens.add(ExpenseDTO.fromJSON(element));
+        itens.add(Expensev2DTO.fromJSON(element));
       }
   }
 

@@ -1,15 +1,16 @@
 import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
+import 'package:scaffold_project/Domain/DTO/expense_v2.dart';
 import 'package:scaffold_project/Infra/Repositories/expenses_repositorie/ExpensesRepositorie.dart';
 import 'package:scaffold_project/Utils/IOC.dart';
 import 'package:scaffold_project/Utils/functions_helpers.dart';
 
 class ExpenseSservice {
-  Future<ExpenseDTO> insertExpense(ExpenseDTO value) async {
+  Future<Expensev2DTO> insertExpense(Expensev2DTO value) async {
     ExpensesRepositorie expenseRepository =
         RepositoryFactory.getRepository(RepositoryType.expensesRepositories);
 
     var result = await expenseRepository.insertExpense(value);
-    return ExpenseDTO.fromJSON(result);
+    return Expensev2DTO.fromJSON(result);
   }
 
   Future<List<Map<String, dynamic>>> getExpense() async {

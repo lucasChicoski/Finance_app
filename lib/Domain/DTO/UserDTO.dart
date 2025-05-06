@@ -1,6 +1,6 @@
-import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
 import 'package:scaffold_project/Domain/DTO/ExpenseInstallmentDTO.dart';
 import 'package:scaffold_project/Domain/DTO/FinanceConfigDTO.dart';
+import 'package:scaffold_project/Domain/DTO/expense_v2.dart';
 import 'package:scaffold_project/Domain/Models/DespesasParceladas.dart';
 
 class UserDTO {
@@ -12,7 +12,7 @@ class UserDTO {
   String? phoneNumber;
   String? cpf;
   String? passwd;
-  List<ExpenseDTO>? despesas;
+  List<Expensev2DTO>? despesas;
   List<ExpenseInstallmentDTO>? despesasParceladas;
   FinanceConfigDTO? config;
   List<DespesasAgrupadas>? despesasAgrupadas;
@@ -55,7 +55,7 @@ class UserDTO {
     };
   }
 
-  setExpenses(List<ExpenseDTO> despesas) {
+  setExpenses(List<Expensev2DTO> despesas) {
     this.despesas = despesas;
   }
 

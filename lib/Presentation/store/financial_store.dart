@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:scaffold_project/Controller/Configs/FinanceApplication.dart';
 import 'package:scaffold_project/Controller/Financial/ExpensiveApplication.dart';
+import 'package:scaffold_project/Presentation/Widgets/alert/simple_toast.dart';
+import 'package:scaffold_project/Utils/navigation_class.dart';
 // import 'package:get_it/get_it.dart';
 // import 'package:scaffold_project/Presentation/store/category_store.dart';
 
@@ -15,7 +17,7 @@ class FinancialStore extends ChangeNotifier {
   String tipoDespesa = ''; //:"Teste",
   String descricao = ''; //:"Playstation 5",
   double valorGasto = 0; //:5000,
-  bool isDivided = true;
+  bool isDivided = false;
   int quantidadeParcela = 1;
   double parcela = 0;
   int month = 0;
@@ -44,5 +46,31 @@ class FinancialStore extends ChangeNotifier {
   setValorGasto(String value) {
     valorGasto = double.parse(value);
     parcela = double.parse(value);
+  }
+
+  Map<String, dynamic> formToJson() {
+    Map<String, dynamic> json = {
+      'id_user': 1,
+      'date': data,
+      'id_category': idCategory,
+      'tipo_despesa': tipoDespesa,
+      'descricao_despesa': descricao,
+      'valor_gasto': valorGasto,
+      'is_divided': isDivided,
+      'quantidade_parcela': quantidadeParcela,
+      'parcela': parcela,
+      'month': month,
+      'year': year,
+    };
+    return json;
+  }
+
+  Future<void> submmit(BuildContext context) async {
+    expensiveApplication.insertExpense(formToJson()).then((value) {
+      NavigationPages.pop(context);
+      simpleToast(context, item: "Despesa cadastrada");
+    }).catchError((error) {
+      simpleToast(context, item: "Erro ao cadastrar despesa");
+    });
   }
 }

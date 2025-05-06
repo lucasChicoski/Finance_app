@@ -4,11 +4,11 @@ import 'package:scaffold_project/Presentation/Components/Labels/TextLabel.dart';
 import 'package:scaffold_project/Presentation/Components/chart/PizzaChart.dart';
 import 'package:scaffold_project/Presentation/Components/spaces/Spaces.dart';
 import 'package:scaffold_project/Presentation/store/chart/expense_chart_store.dart';
-import 'package:scaffold_project/Presentation/store/financial_store.dart';
+
 import 'package:scaffold_project/Utils/size_config.dart';
 
 ExpenseChartViewModel _expenseChartViewModel = GetIt.I<ExpenseChartViewModel>();
-FinancialStore _financialStore = GetIt.I<FinancialStore>();
+
 
 class ReportView extends StatelessWidget {
   const ReportView({super.key});

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Domain/DTO/CategoryDTO.dart';
-import 'package:scaffold_project/Presentation/Components/Calendar/calendar_widget.dart';
 import 'package:scaffold_project/Presentation/Components/Calendar/native_calendar_widget.dart';
 import 'package:scaffold_project/Presentation/Components/buttons/elevated_button_custom.dart';
 import 'package:scaffold_project/Presentation/Components/drop_down/DropDownCustom.dart';
@@ -65,7 +64,11 @@ class RegisterSpentNotDivided extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  ElevatedButtonCustom(label: "Registrar", onPressed: () {})
+                  ElevatedButtonCustom(
+                      label: "Registrar",
+                      onPressed: () {
+                        _financialStore.submmit(context);
+                      }),
                 ],
               ),
             ),

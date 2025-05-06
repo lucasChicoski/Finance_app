@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
+import 'package:scaffold_project/Domain/DTO/expense_v2.dart';
 import 'package:scaffold_project/Infra/Repositories/expenses_repositorie/IExpensesRepository.dart';
 
 class ExpensesRepositorie implements IExpensesRepository {
@@ -23,9 +24,9 @@ class ExpensesRepositorie implements IExpensesRepository {
   }
 
   @override
-  Future insertExpense(ExpenseDTO value) async {
+  Future insertExpense(Expensev2DTO value) async {
     try {
-      var result = await _dio.post('/register-expense', data: value.toJSON());
+      var result = await _dio.post('/register-expense', data: value.toJson());
 
       return result.data;
     } catch (e) {
