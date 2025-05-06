@@ -12,11 +12,16 @@ class DatePickerExample extends StatefulWidget {
 
 class _DatePickerExampleState extends State<DatePickerExample> {
   String? selectedDate;
+  
+  
   final TextEditingController? conttroller = TextEditingController();
   Future<void> _selectDate() async {
+    final DateTime asdasd = DateTime.now();
+    String formattedDate = DateFormat('dd/MM/yyyy').format(asdasd);
+    List<String> listDates = formattedDate.split('/');
     final DateTime? pickedDate = await showDatePicker(
       context: context,
-      initialDate: DateTime(2021, 7, 25),
+      initialDate: DateTime(int.parse(listDates[2]) ,int.parse(listDates[1]), int.parse(listDates[0])),
       firstDate: DateTime(2021),
       lastDate: DateTime(10000),
     );

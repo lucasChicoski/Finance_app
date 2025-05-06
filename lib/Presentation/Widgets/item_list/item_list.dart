@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:scaffold_project/Mock/items_gasto_mock.dart';
-import 'package:scaffold_project/Presentation/store/financial_store.dart';
+// import 'package:get_it/get_it.dart';
+// import 'package:scaffold_project/Mock/items_gasto_mock.dart';
+// import 'package:scaffold_project/Presentation/store/financial_store.dart';
 import 'package:scaffold_project/Presentation/Widgets/alert/custom_alert.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
-FinancialStore _financialStore = GetIt.I<FinancialStore>();
 
 class ItemListWidget extends StatelessWidget {
   final Color? color;
@@ -114,45 +113,3 @@ class TitleList extends StatelessWidget {
   }
 }
 
-//-----------------------------------Construção da lista
-//Mover para camada de Seriço
-
-class ItensListFactory {
-  String month;
-  List<Map<String, dynamic>> itens;
-
-  ItensListFactory({this.month = '', required this.itens});
-
-  factory ItensListFactory.fromJson(Map<String, dynamic> json) {
-    return ItensListFactory(itens: json["itens"], month: json["month"]);
-  }
-}
-
-//Construção da lista (OLD)
-List<Widget> constructList() {
-  List<Widget> x = [];
-
-  Iterable<ItensListFactory> list =
-      itens.map((e) => ItensListFactory.fromJson(e));
-
-  //Primeiro loop - mês.
-  for (var element in list) {
-    x.add(TitleList(
-      title: element.month,
-    ));
-
-    //itens do mês
-    for (var elements in element.itens) {
-      x.add(ItemListWidget(
-        descriptionSpent: elements["title"],
-        valueSpent: double.parse(elements["value"]),
-        id: elements["id"],
-        waySpent: elements["waySpent"],
-      ));
-    }
-    x.add(const SizedBox(
-      height: 30,
-    ));
-  }
-  return x;
-}
