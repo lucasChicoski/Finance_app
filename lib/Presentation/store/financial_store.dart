@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Controller/Configs/FinanceApplication.dart';
 import 'package:scaffold_project/Controller/Financial/ExpensiveApplication.dart';
+import 'package:scaffold_project/Domain/DTO/expense_v2.dart';
 import 'package:scaffold_project/Presentation/Widgets/alert/simple_toast.dart';
+import 'package:scaffold_project/Presentation/store/list_expense_store.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 // import 'package:get_it/get_it.dart';
-// import 'package:scaffold_project/Presentation/store/category_store.dart';
 
 FinanceApplication financeApplication = FinanceApplication();
 ExpensiveApplication expensiveApplication = ExpensiveApplication();
 
-// CategoryViewModel _categoryViewModel = GetIt.I<CategoryViewModel>();
+ListExpenseStore _listExpenseStore = GetIt.I<ListExpenseStore>();
 
 class FinancialStore extends ChangeNotifier {
   int idCategory = 1;
@@ -39,7 +41,6 @@ class FinancialStore extends ChangeNotifier {
   }
 
   setDescricao(String value) {
-    print(value);
     descricao = value;
   }
 
@@ -67,8 +68,11 @@ class FinancialStore extends ChangeNotifier {
 
   Future<void> submmit(BuildContext context) async {
     expensiveApplication.insertExpense(formToJson()).then((value) {
+      _listExpenseStore.addNewItemToList(value as Expensev2DTO);
       NavigationPages.pop(context);
+
       simpleToast(context, item: "Despesa cadastrada");
+      notifyListeners();
     }).catchError((error) {
       simpleToast(context, item: "Erro ao cadastrar despesa");
     });

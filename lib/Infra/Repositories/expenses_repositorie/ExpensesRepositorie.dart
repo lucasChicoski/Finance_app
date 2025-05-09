@@ -18,8 +18,8 @@ class ExpensesRepositorie implements IExpensesRepository {
   }
 
   @override
-  Future getExpense() async {
-    var result = await _dio.post('/get-expense', data: {"user_id": 1});
+  Future getExpense(int id) async {
+    var result = await _dio.post('/get-expense', data: {"user_id": id});
     return result.data["data"];
   }
 

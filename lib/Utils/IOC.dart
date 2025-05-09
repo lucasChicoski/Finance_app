@@ -1,5 +1,5 @@
 import 'package:scaffold_project/Global/dio_instance.dart';
-import 'package:scaffold_project/Infra/Repositories/AuthRepository.dart';
+import 'package:scaffold_project/Infra/Repositories/auth/AuthRepository.dart';
 import 'package:scaffold_project/Infra/Repositories/category/CategoryRepository.dart';
 import 'package:scaffold_project/Infra/Repositories/chart/expense_queries/ExpensesQueries..dart';
 import 'package:scaffold_project/Infra/Repositories/config_repositories/finance/config_finance_repository.dart';
