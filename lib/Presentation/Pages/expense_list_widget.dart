@@ -3,7 +3,6 @@ import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Presentation/Widgets/App_Bar/app_bar_custom.dart';
 import 'package:scaffold_project/Presentation/store/list_expense_store.dart';
 
-
 ListExpenseStore _listExpenseStore = GetIt.I<ListExpenseStore>();
 
 class ExpenseList extends StatefulWidget {
@@ -30,7 +29,6 @@ class _ExpenseListState extends State<ExpenseList> {
 
     return MaterialApp(
       home: Scaffold(
-        
         body: Column(
           children: [
             const AppBarCustom(), //Mudar para dentro do construct list
@@ -43,14 +41,11 @@ class _ExpenseListState extends State<ExpenseList> {
                     print(
                         'Ao executar essa função, deverá recarregar os itens');
                   },
-                  child: ListView(
-                    children: _listExpenseStore.listExpense,
-                    // children: [
-                    //   for (int i = 0;
-                    //       i < _listExpenseStore.listExpense.length;
-                    //       i++)
-                    //     _listExpenseStore.listExpense[i]
-                    // ],
+                  child: ListView.builder(
+                    itemCount: _listExpenseStore.listExpense.length,
+                    itemBuilder: (context, index) {
+                      return _listExpenseStore.listExpense[index];
+                    },
                   ),
                 ),
               ),

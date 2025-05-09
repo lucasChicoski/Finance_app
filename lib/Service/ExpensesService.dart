@@ -23,7 +23,7 @@ class ExpenseSservice {
     ExpensesRepositorie expenseRepository =
         RepositoryFactory.getRepository(RepositoryType.expensesRepositories);
 
-    var result = await expenseRepository.getExpense();
+    var result = await expenseRepository.getExpense(1);
 
     for (var element in result) {
       ExpenseDTO expenseDTO = ExpenseDTO.fromJSON(element);
