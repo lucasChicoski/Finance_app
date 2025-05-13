@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:scaffold_project/Presentation/Components/Calendar/native_calendar_widget.dart';
 import 'package:scaffold_project/Presentation/Components/buttons/elevated_button_custom.dart';
 import 'package:scaffold_project/Presentation/Components/text_input/text_input_custom.dart';
+import 'package:scaffold_project/Presentation/store/financial_divided_store.dart';
 
 import 'package:scaffold_project/Utils/navigation_class.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
-
+FinancialDividedViewModel _financialDividedViewModel =
+    GetIt.I<FinancialDividedViewModel>();
 
 class RegisterSpentDived extends StatelessWidget {
   const RegisterSpentDived({super.key});
@@ -35,6 +39,9 @@ class RegisterSpentDived extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
                 ),
               ),
+              DatePickerExample(
+                    onChange: _financialDividedViewModel.setData,
+                  ),
               const SizedBox(
                 height: 10,
               ),
@@ -42,7 +49,7 @@ class RegisterSpentDived extends StatelessWidget {
                 hint: 'Descrição',
                 hintColor: Colors.white.withAlpha(100),
                 digitInputUserColor: Colors.white,
-                onChange: (value) {},
+                onChange: _financialDividedViewModel.setDescriptionSpend,
               ),
               const SizedBox(
                 height: 10,
@@ -52,16 +59,16 @@ class RegisterSpentDived extends StatelessWidget {
                   hintColor: Colors.white.withAlpha(100),
                   textType: TextInputType.number,
                   digitInputUserColor: Colors.white,
-                  onChange: (value) {}),
+                  onChange: _financialDividedViewModel.setValueSpend),
               const SizedBox(
                 height: 10,
               ),
               TextInputCustom(
                   textType: TextInputType.number,
-                  hint: 'Quantidade de prestações',
+                  hint: 'Quantidade de parcelas',
                   hintColor: Colors.white.withAlpha(100),
                   digitInputUserColor: Colors.white,
-                  onChange: (value) {}),
+                  onChange: _financialDividedViewModel.setQuantidadeParcela),
               const SizedBox(
                 height: 10,
               ),
@@ -71,7 +78,7 @@ class RegisterSpentDived extends StatelessWidget {
                     child: ElevatedButtonCustom(
                       label: 'Registrar',
                       onPressed: () {
-                       
+                        _financialDividedViewModel.submmit(context);
                       },
                     ),
                   ),

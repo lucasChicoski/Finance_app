@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:scaffold_project/Domain/DTO/ExpenseInstallmentDTO.dart';
+import 'package:scaffold_project/Domain/DTO/expense_installment_dto.dart';
 
 import 'package:scaffold_project/Infra/Repositories/expense_installments/IExpenses_installments_repository.dart';
 

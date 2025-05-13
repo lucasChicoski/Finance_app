@@ -1,4 +1,4 @@
-import 'package:scaffold_project/Domain/DTO/ExpenseInstallmentDTO.dart';
+import 'package:scaffold_project/Domain/DTO/expense_installment_dto.dart';
 
 abstract class IExpensesInstallmentsRepository {
   // Insert, Update, delete, Get

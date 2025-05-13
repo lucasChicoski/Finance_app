@@ -5,7 +5,7 @@ import 'package:scaffold_project/Controller/Configs/UserApplication.dart';
 import 'package:scaffold_project/Controller/Financial/ExpensesInstallmentsApplication.dart';
 import 'package:scaffold_project/Controller/Financial/ExpensiveApplication.dart';
 import 'package:scaffold_project/Domain/DTO/CategoryDTO.dart';
-import 'package:scaffold_project/Domain/DTO/ExpenseInstallmentDTO.dart';
+import 'package:scaffold_project/Domain/DTO/expense_installment_dto.dart';
 import 'package:scaffold_project/Domain/DTO/FinanceConfigDTO.dart';
 import 'package:scaffold_project/Domain/Models/UserConfigModel.dart';
 import 'package:scaffold_project/Presentation/store/category_store.dart';

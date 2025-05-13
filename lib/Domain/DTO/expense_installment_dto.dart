@@ -1,38 +1,42 @@
 class ExpenseInstallmentDTO {
   String descricaoDespesa;
   double valorGasto;
-  double prestacoes;
+  double parcela;
   int qParcela;
   int userId;
+  String date;
   int? id;
 
   ExpenseInstallmentDTO({
     required this.descricaoDespesa,
-    required this.prestacoes,
+    required this.parcela,
     required this.qParcela,
     required this.valorGasto,
     required this.userId,
+    required this.date,
     this.id,
   });
 
   factory ExpenseInstallmentDTO.fromJson(Map<String, dynamic> json) {
     return ExpenseInstallmentDTO(
       id: json['id'],
-      userId: int.parse(json["user_id"].toString()),
+      userId: int.parse(json["id_user"].toString()),
       descricaoDespesa: json["descricao_despesa"],
-      prestacoes: double.parse(json["prestacoes"].toString()),
-      qParcela: int.parse(json["parcela"].toString()),
+      parcela: double.parse(json["parcela"].toString()),
+      qParcela: int.parse(json["quantidade_parcela"].toString()),
       valorGasto: double.parse(json["valor_gasto"].toString()),
+      date: json["date"],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      "description_spent": descricaoDespesa,
-      "value_spent": valorGasto,
-      "prestacoes": prestacoes,
-      "parcela": qParcela,
-      "user_id": userId,
+      "descricao_despesa": descricaoDespesa,
+      "valor_gasto": valorGasto,
+      "quantidade_parcela": qParcela,
+      "parcela": parcela,
+      "id_user": userId,
+      "date": date
     };
   }
 }
