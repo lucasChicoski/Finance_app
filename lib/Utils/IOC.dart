@@ -43,8 +43,6 @@ class ServiceFactory {
         return ExpensesQueriesService();
       case ServiceType.authService:
         return AuthService();
-      default:
-        throw Exception('Service type not supported');
     }
   }
 }
@@ -76,8 +74,6 @@ class RepositoryFactory {
         return ExpensesQueriesRepository(DioInstance.dio());
       case RepositoryType.authRepository:
         return Authrepository(DioInstance.dio());
-      default:
-        throw Exception('Repository type not supported');
     }
   }
 }
