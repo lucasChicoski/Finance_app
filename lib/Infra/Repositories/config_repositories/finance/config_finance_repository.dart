@@ -12,7 +12,7 @@ class ConfigFinanceRepository implements IConfigFinanceRepository {
   @override
   Future getConfigFinance() async {
     var result = await _dio.post('/get-finance-config', data: {"userId": 1});
-    return result.data;
+    return result.data['data'];
   }
 
   @override

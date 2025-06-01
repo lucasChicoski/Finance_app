@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scaffold_project/Controller/Financial/ExpensesInstallmentsApplication.dart';
+import 'package:scaffold_project/Utils/navigation_class.dart';
 
 ExpensesInstallmentsApplication _expensesInstallmentsApplication =
     ExpensesInstallmentsApplication();
@@ -45,7 +46,11 @@ class FinancialDividedViewModel extends ChangeNotifier {
   Future<void> submmit(BuildContext context) async {
     _expensesInstallmentsApplication
         .insertInstallments(formToJson())
-        .then((response) => {})
-        .catchError((error) => {});
+        .then((response) => {
+           NavigationPages.pop(context)
+        })
+        .catchError((error) => {
+          print(error),
+        });
   }
 }

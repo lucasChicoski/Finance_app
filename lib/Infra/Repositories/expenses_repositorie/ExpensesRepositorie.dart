@@ -28,7 +28,7 @@ class ExpensesRepositorie implements IExpensesRepository {
     try {
       var result = await _dio.post('/register-expense', data: value.toJson());
 
-      return result.data;
+      return result.data['data'];
     } catch (e) {
       throw Error();
     }

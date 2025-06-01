@@ -12,7 +12,7 @@ class ExpensiveApplication {
         await ServiceFactory.getService(ServiceType.expensesService);
 
     Expensev2DTO result =
-        await expenseSservice.insertExpense(expenseV2);
+        await expenseSservice.insertExpense(expenseV2); 
 
     return result;
   }

@@ -4,6 +4,7 @@ import 'package:scaffold_project/Controller/Configs/FinanceApplication.dart';
 import 'package:scaffold_project/Controller/Financial/ExpensiveApplication.dart';
 import 'package:scaffold_project/Domain/DTO/expense_v2.dart';
 import 'package:scaffold_project/Presentation/Widgets/alert/simple_toast.dart';
+import 'package:scaffold_project/Presentation/store/config_financeiro_store.dart';
 import 'package:scaffold_project/Presentation/store/list_expense_store.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 // import 'package:get_it/get_it.dart';
@@ -12,6 +13,7 @@ FinanceApplication financeApplication = FinanceApplication();
 ExpensiveApplication expensiveApplication = ExpensiveApplication();
 
 ListExpenseStore _listExpenseStore = GetIt.I<ListExpenseStore>();
+ConfigFinanceiroStore _configFinanceiroStore = GetIt.I<ConfigFinanceiroStore>();
 
 class FinancialStore extends ChangeNotifier {
   int idCategory = 1;
@@ -67,7 +69,15 @@ class FinancialStore extends ChangeNotifier {
   }
 
   Future<void> submmit(BuildContext context) async {
-    expensiveApplication.insertExpense(formToJson()).then((value) {
+    expensiveApplication.insertExpense(formToJson()).then((value) async {
+      final response =
+          await financeApplication.getFinanceConfigInf();
+
+      _configFinanceiroStore.setBalance(response.balance!);
+      _configFinanceiroStore.setRenda(response.renda!);
+      _configFinanceiroStore.setGuardaDinheiro(response.saveMoney!);
+
+
       _listExpenseStore.addNewItemToList(value as Expensev2DTO);
       NavigationPages.pop(context);
 

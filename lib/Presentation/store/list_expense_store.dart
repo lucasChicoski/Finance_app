@@ -33,6 +33,12 @@ class ListExpenseStore extends ChangeNotifier {
     notifyListeners();
   }
 
+  claarList() {
+    listExpense.clear();
+    notifyListeners();
+  }
+
+
   addNewItemToList(Expensev2DTO value) {
     listExpense.insert(
         1,

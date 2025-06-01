@@ -28,10 +28,16 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        bottomNavigationBar: const NavBottom(),
-        body: listScreen[_navigationViewModel.index],
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) => {
+        print('Tentou voltar')
+      },
+      child: MaterialApp(
+        home: Scaffold(
+          bottomNavigationBar: const NavBottom(),
+          body: listScreen[_navigationViewModel.index],
+        ),
       ),
     );
   }

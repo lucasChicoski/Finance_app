@@ -6,6 +6,7 @@ import 'package:scaffold_project/Presentation/Pages/register_spent_not_divided.d
 import 'package:scaffold_project/Presentation/Pages/report.dart';
 import 'package:scaffold_project/Presentation/store/auth_store.dart';
 import 'package:scaffold_project/Presentation/store/chart/expense_chart_store.dart';
+import 'package:scaffold_project/Presentation/store/config_financeiro_store.dart';
 import 'package:scaffold_project/Presentation/store/financial_store.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
@@ -15,6 +16,8 @@ FinancialStore _financialStore = GetIt.I<FinancialStore>();
 ExpenseChartViewModel _expenseChartViewModel = GetIt.I<ExpenseChartViewModel>();
 SQFlite sqFlite = GetIt.I<SQFlite>();
 AuthStore _authStore = GetIt.I<AuthStore>();
+ConfigFinanceiroStore _configFinanceiroStore =
+    GetIt.I<ConfigFinanceiroStore>();
 
 class AppBarCustom extends StatefulWidget {
   const AppBarCustom({super.key});
@@ -82,7 +85,7 @@ class _AppBarCustomState extends State<AppBarCustom> {
                         color: secundaryColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 35)),
-                Text('R\$ ',
+                Text('R\$ ${_configFinanceiroStore.balance.toStringAsFixed(2)}',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: secundaryColor,
