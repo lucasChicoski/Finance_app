@@ -7,22 +7,35 @@ import 'package:scaffold_project/Global/Returns/ReturnService.dart';
 import 'package:scaffold_project/Presentation/Pages/Home.dart';
 import 'package:scaffold_project/Presentation/Widgets/alert/simple_toast.dart';
 import 'package:scaffold_project/Presentation/store/config_financeiro_store.dart';
+import 'package:scaffold_project/Presentation/store/list_expense_installments_store.dart';
 import 'package:scaffold_project/Presentation/store/list_expense_store.dart';
+import 'package:scaffold_project/Service/ExpensesInstallmentsService.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 
 ListExpenseStore _listExpenseStore = GetIt.I<ListExpenseStore>();
 ConfigFinanceiroStore _configFinanceiroStore = GetIt.I<ConfigFinanceiroStore>();
+ListExpenseInstallmentsStore _listExpenseInstallmentsStore =
+    GetIt.I<ListExpenseInstallmentsStore>();
+
 class AuthStore extends ChangeNotifier {
   final _authC = AuthController();
+  final _despesasParceladas = ExpensesInstallmentsService();
   late UserDTO user;
 
   String cpf = '127.312.277-10';
   String passwd = '123';
 
   Future submit(BuildContext context) async {
-    final response = await _authC.login(AuthDTO(cpf: cpf, passwd: passwd)) as ReturnService ; 
+    final response =
+        await _authC.login(AuthDTO(cpf: cpf, passwd: passwd)) as ReturnService;
 
     if (response.data != null) {
+      final data = response.data as UserDTO;
+
+      final despeasParceladas = await   _despesasParceladas.getExpensesInstallments(data.id!);
+      _listExpenseInstallmentsStore.setListExpenseInstallments(despeasParceladas);
+
+
       user = response.data as UserDTO;
 
       _configFinanceiroStore.setBalance(user.config!.balance!);
@@ -30,7 +43,7 @@ class AuthStore extends ChangeNotifier {
       _configFinanceiroStore.setGuardaDinheiro(user.config!.saveMoney!);
 
       _listExpenseStore.constructList(user.despesasAgrupadas ?? []);
-      
+
       NavigationPages.navigationToPageMaterial(context, Home());
     } else {
       simpleToast(context, item: 'Erro ao efetuar login');

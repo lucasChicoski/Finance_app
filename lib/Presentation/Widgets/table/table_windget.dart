@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Presentation/store/financial_divided_store.dart';
+import 'package:scaffold_project/Presentation/store/list_expense_installments_store.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
 FinancialDividedViewModel _financialDividedViewModel =
     GetIt.I<FinancialDividedViewModel>();
+
+ListExpenseInstallmentsStore _listExpenseInstallmentsStore =
+    GetIt.I<ListExpenseInstallmentsStore>();
 
 class TableWidget extends StatefulWidget {
   const TableWidget({super.key});
@@ -60,7 +64,16 @@ class _TableWidgetState extends State<TableWidget> {
             height: 15,
           ),
           Table(
-            // children: [..._financialDividedViewModel.listExpansive],
+            children: _listExpenseInstallmentsStore.listExpenseInstallments
+                .asMap()
+                .entries
+                .map((e) => RowOfTable(
+                        e.value.descricaoDespesa,
+                        e.value.qParcela,
+                        e.value.valorGasto, e.value.parcela, 'hash1', e.key )
+                    .row())
+                .toList(),
+            
           ),
           const SizedBox(
             height: 15,
@@ -110,9 +123,10 @@ class RowOfTable {
   int qParcela;
   double valueParcela;
   String hash;
+  int? indexItem;
 
   RowOfTable(this.description, this.qParcela, this.valueParcela,
-      this.valueSpent, this.hash);
+      this.valueSpent, this.hash, this.indexItem);
 
   TableRow row() {
     return TableRow(
@@ -120,10 +134,12 @@ class RowOfTable {
       children: [
         GestureDetector(
           onTap: () {
-            print('teste');
+            print('Item Cliclado: ${indexItem.toString()}');
           },
           child: Center(
-              child: Text(description, style: TextStyle(color: quartaryColro, overflow: TextOverflow.ellipsis))),
+              child: Text(description,
+                  style: TextStyle(
+                      color: quartaryColro, overflow: TextOverflow.ellipsis))),
         ),
         GestureDetector(
           child: Center(

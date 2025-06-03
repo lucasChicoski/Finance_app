@@ -6,6 +6,7 @@ import 'package:scaffold_project/Presentation/store/config_financeiro_store.dart
 import 'package:scaffold_project/Presentation/store/config_user_store.dart';
 import 'package:scaffold_project/Presentation/store/financial_divided_store.dart';
 import 'package:scaffold_project/Presentation/store/financial_store.dart';
+import 'package:scaffold_project/Presentation/store/list_expense_installments_store.dart';
 import 'package:scaffold_project/Presentation/store/list_expense_store.dart';
 import 'package:scaffold_project/Presentation/store/navigation_store.dart';
 import 'package:scaffold_project/Presentation/store/sigin_store.dart';
@@ -24,4 +25,5 @@ setUpGetIt() {
   getIt.registerSingleton<AuthStore>(AuthStore());
   getIt.registerSingleton<ListExpenseStore>(ListExpenseStore());
   getIt.registerSingleton<ConfigFinanceiroStore>(ConfigFinanceiroStore());
+  getIt.registerSingleton<ListExpenseInstallmentsStore>(ListExpenseInstallmentsStore());
 }
