@@ -41,6 +41,7 @@ class _ExpenseListState extends State<ExpenseList> {
                 child: RefreshIndicator(
                   onRefresh: () async {
                     _despesas.getExpense().then((value) {
+                      _listExpenseStore.constructList(value);
                       print(value);
                     });
 

@@ -7,6 +7,8 @@ class ListExpenseStore extends ChangeNotifier {
   List<Widget> listExpense = [];
 
   constructList(List listaDespesasAgrupadas) {
+    listExpense.clear();
+    
     if (listaDespesasAgrupadas.isEmpty) {
       listExpense.add(TitleList(title: DateTime.now().year.toString()));
       return;

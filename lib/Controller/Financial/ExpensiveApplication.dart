@@ -21,7 +21,7 @@ class ExpensiveApplication {
     ExpenseSservice expenseSservice =
         await ServiceFactory.getService(ServiceType.expensesService);
 
-    List<Map> listExpense = await expenseSservice.getExpense();
+    List<dynamic> listExpense = await expenseSservice.getExpense();
 
     return listExpense;
   }
