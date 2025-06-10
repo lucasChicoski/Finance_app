@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:scaffold_project/Controller/Financial/ExpensiveApplication.dart';
 import 'package:scaffold_project/Presentation/Widgets/App_Bar/app_bar_custom.dart';
 import 'package:scaffold_project/Presentation/store/list_expense_store.dart';
 
 ListExpenseStore _listExpenseStore = GetIt.I<ListExpenseStore>();
+ExpensiveApplication _despesas = ExpensiveApplication();
 
 class ExpenseList extends StatefulWidget {
   const ExpenseList({super.key});
@@ -38,6 +40,10 @@ class _ExpenseListState extends State<ExpenseList> {
                 // color: primaryColor,
                 child: RefreshIndicator(
                   onRefresh: () async {
+                    _despesas.getExpense().then((value) {
+                      print(value);
+                    });
+
                     print(
                         'Ao executar essa função, deverá recarregar os itens');
                   },

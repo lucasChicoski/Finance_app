@@ -32,7 +32,8 @@ class AuthStore extends ChangeNotifier {
     if (response.data != null) {
       final data = response.data as UserDTO;
 
-      final despeasParceladas = await   _despesasParceladas.getExpensesInstallments(data.id!);
+      final despeasParceladas =
+          await _despesasParceladas.getExpensesInstallments(data.id!);
       _listExpenseInstallmentsStore.setListExpenseInstallments(despeasParceladas);
 
 
