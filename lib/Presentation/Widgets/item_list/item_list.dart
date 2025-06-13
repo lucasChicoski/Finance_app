@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Presentation/Widgets/alert/custom_alert.dart';
+import 'package:scaffold_project/Presentation/store/expense_store.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
+ExpenseStore _expenseStore = GetIt.I<ExpenseStore>();
 
 class ItemListWidget extends StatelessWidget {
   final Color? color;
@@ -9,14 +12,16 @@ class ItemListWidget extends StatelessWidget {
       waySpent; //qual foi a forma do gasto. Cartão nubank, Registro do app
   final String descriptionSpent;
   final double valueSpent;
-  final String id;
+  final int? id;
+  final String hash;
 
   const ItemListWidget({
     super.key,
     required this.waySpent,
     required this.descriptionSpent,
     required this.valueSpent,
-    required this.id,
+    this.id,
+    required this.hash,
     this.color,
   });
 
@@ -77,9 +82,7 @@ class ItemListWidget extends StatelessWidget {
                       color: quartaryColro,
                     )),
                 IconButton(
-                    onPressed: () {
-                      // _financialStore.deleteExpense(id);
-                    },
+                    onPressed: () => _expenseStore.deleteExpense(hash),
                     icon: Icon(
                       Icons.delete,
                       color: quartaryColro,
@@ -109,4 +112,3 @@ class TitleList extends StatelessWidget {
     );
   }
 }
-

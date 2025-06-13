@@ -7,6 +7,7 @@ import 'package:scaffold_project/Utils/size_config.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
 class Configuration extends StatelessWidget {
+  final String test = '';
   const Configuration({super.key});
 
   @override

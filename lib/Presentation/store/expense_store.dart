@@ -15,7 +15,7 @@ ExpensiveApplication expensiveApplication = ExpensiveApplication();
 ListExpenseStore _listExpenseStore = GetIt.I<ListExpenseStore>();
 ConfigFinanceiroStore _configFinanceiroStore = GetIt.I<ConfigFinanceiroStore>();
 
-class FinancialStore extends ChangeNotifier {
+class ExpenseStore extends ChangeNotifier {
   int idCategory = 1;
   String data = ''; //:"2025-05-05",
   String tipoDespesa = ''; //:"Teste",
@@ -68,15 +68,18 @@ class FinancialStore extends ChangeNotifier {
     return json;
   }
 
+  Future<void> deleteExpense(String hash) async {    
+    await expensiveApplication.deleteExpense(hash);
+    _listExpenseStore.removeItem(hash);
+  }
+
   Future<void> submmit(BuildContext context) async {
     expensiveApplication.insertExpense(formToJson()).then((value) async {
-      final response =
-          await financeApplication.getFinanceConfigInf();
+      final response = await financeApplication.getFinanceConfigInf();
 
       _configFinanceiroStore.setBalance(response.balance!);
       _configFinanceiroStore.setRenda(response.renda!);
       _configFinanceiroStore.setGuardaDinheiro(response.saveMoney!);
-
 
       _listExpenseStore.addNewItemToList(value as Expensev2DTO);
       NavigationPages.pop(context);
