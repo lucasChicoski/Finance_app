@@ -6,10 +6,10 @@ import 'package:scaffold_project/Presentation/Components/buttons/elevated_button
 import 'package:scaffold_project/Presentation/Components/drop_down/DropDownCustom.dart';
 import 'package:scaffold_project/Presentation/Components/text_input/text_input_custom.dart';
 import 'package:scaffold_project/Presentation/store/category_store.dart';
-import 'package:scaffold_project/Presentation/store/financial_store.dart';
+import 'package:scaffold_project/Presentation/store/expense_store.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 
-FinancialStore _financialStore = GetIt.I<FinancialStore>();
+ExpenseStore _financialStore = GetIt.I<ExpenseStore>();
 CategoryViewModel _categoryViewModel = GetIt.I<CategoryViewModel>();
 
 class RegisterSpentNotDivided extends StatelessWidget {

@@ -4,13 +4,21 @@ import 'package:scaffold_project/Presentation/Widgets/item_list/item_list.dart';
 import 'package:scaffold_project/Utils/functions_helpers.dart';
 
 class ListExpenseStore extends ChangeNotifier {
-  List<Widget> listExpense = [];
+  List<ItensIndexed> listExpense = [];
+
+
+  removeItem(String hash){
+    listExpense.removeWhere((element) => element.hash == hash);
+    notifyListeners();
+  }
 
   constructList(List listaDespesasAgrupadas) {
     listExpense.clear();
-    
+
     if (listaDespesasAgrupadas.isEmpty) {
-      listExpense.add(TitleList(title: DateTime.now().year.toString()));
+      ItensIndexed itemIndexed = ItensIndexed(
+          hash: '', widget: TitleList(title: DateTime.now().year.toString()));
+      listExpense.add(itemIndexed);
       return;
     }
 
@@ -18,16 +26,26 @@ class ListExpenseStore extends ChangeNotifier {
       String year = element['ano'].toString();
 
       for (var month in element['meses']) {
-        listExpense.add(
-            TitleList(title: '${Global.defineMonth(month['mes'])} de $year'));
+        ItensIndexed itemIndexed = ItensIndexed(
+            hash: '',
+            widget: TitleList(
+                title: '${Global.defineMonth(month['mes'])} de $year'));
+        listExpense.add(itemIndexed);
 
         for (var item in month['itens']) {
-          listExpense.add(ItemListWidget(
-            descriptionSpent: item["descricao_despesa"],
-            valueSpent: (item['valor_gasto'] as num).toDouble(),
-            waySpent: item["tipo_despesa"],
-            id: '1',
-          ));
+          Expensev2DTO expense = Expensev2DTO.fromJSON(item);
+
+          ItensIndexed itemIndexed = ItensIndexed(
+              hash: expense.hash,
+              widget: ItemListWidget(
+                descriptionSpent: expense.descricao,
+                valueSpent: expense.valorGasto,
+                waySpent: expense.tipoDespesa,
+                id: expense.id,
+                hash: expense.hash,
+              ));
+
+          listExpense.add(itemIndexed);
         }
       }
     }
@@ -40,17 +58,26 @@ class ListExpenseStore extends ChangeNotifier {
     notifyListeners();
   }
 
-
   addNewItemToList(Expensev2DTO value) {
-    listExpense.insert(
-        1,
-        ItemListWidget(
+    ItensIndexed item = ItensIndexed(
+        hash: value.hash,
+        widget: ItemListWidget(
           descriptionSpent: value.descricao,
           valueSpent: value.valorGasto,
           waySpent: value.tipoDespesa,
-          id: '1',
+          id: value.id,
+          hash: value.hash,
         ));
+
+    listExpense.insert(1, item);
 
     notifyListeners();
   }
+}
+
+class ItensIndexed {
+  late Widget widget;
+  late String hash;
+
+  ItensIndexed({required this.widget, required this.hash});
 }

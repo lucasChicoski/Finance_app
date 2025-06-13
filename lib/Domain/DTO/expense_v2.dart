@@ -10,6 +10,8 @@ class Expensev2DTO {
   late double parcela;
   late int month;
   late int year;
+  final int? id;
+  late String hash;
 
   Expensev2DTO(
       {required this.idCategory,
@@ -22,21 +24,26 @@ class Expensev2DTO {
       required this.quantidadeParcela,
       required this.parcela,
       required this.month,
-      required this.year});
+      required this.year,
+      this.id,
+      required this.hash});
 
   factory Expensev2DTO.fromJSON(Map<String, dynamic> json) {
     return Expensev2DTO(
+        id: json['id'],
         idUser: json['id_user'],
         idCategory: json['id_category'],
         data: json['date'],
         tipoDespesa: json['tipo_despesa'],
         descricao: json['descricao_despesa'],
-        valorGasto: double.parse(json['valor_gasto'].toString()), // json['valor_gasto'],
+        valorGasto: double.parse(
+            json['valor_gasto'].toString()), // json['valor_gasto'],
         isDivided: json['is_divided'],
         quantidadeParcela: json['quantidade_parcela'],
         parcela: double.parse(json['parcela'].toString()), // json['parcela'],
         month: json['month'],
-        year: json['year']);
+        year: json['year'],
+        hash: json['hash'] ?? '');
   }
 
   Map<String, dynamic> toJson() {

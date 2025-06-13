@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Presentation/Components/Calendar/native_calendar_widget.dart';
 import 'package:scaffold_project/Presentation/Components/buttons/elevated_button_custom.dart';
 import 'package:scaffold_project/Presentation/Components/text_input/text_input_custom.dart';
-import 'package:scaffold_project/Presentation/store/financial_divided_store.dart';
+import 'package:scaffold_project/Presentation/store/expense_divided_store.dart';
 
 import 'package:scaffold_project/Utils/navigation_class.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';

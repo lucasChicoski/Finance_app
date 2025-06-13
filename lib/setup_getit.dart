@@ -4,8 +4,8 @@ import 'package:scaffold_project/Presentation/store/category_store.dart';
 import 'package:scaffold_project/Presentation/store/chart/expense_chart_store.dart';
 import 'package:scaffold_project/Presentation/store/config_financeiro_store.dart';
 import 'package:scaffold_project/Presentation/store/config_user_store.dart';
-import 'package:scaffold_project/Presentation/store/financial_divided_store.dart';
-import 'package:scaffold_project/Presentation/store/financial_store.dart';
+import 'package:scaffold_project/Presentation/store/expense_divided_store.dart';
+import 'package:scaffold_project/Presentation/store/expense_store.dart';
 import 'package:scaffold_project/Presentation/store/list_expense_installments_store.dart';
 import 'package:scaffold_project/Presentation/store/list_expense_store.dart';
 import 'package:scaffold_project/Presentation/store/navigation_store.dart';
@@ -15,7 +15,7 @@ final getIt = GetIt.instance;
 
 setUpGetIt() {
   getIt.registerSingleton<NavigationViewModel>(NavigationViewModel());
-  getIt.registerSingleton<FinancialStore>((FinancialStore()));
+  getIt.registerSingleton<ExpenseStore>((ExpenseStore()));
   getIt.registerSingleton<FinancialDividedViewModel>(
       FinancialDividedViewModel());
   getIt.registerSingleton<ConfigUserViewModel>(ConfigUserViewModel());

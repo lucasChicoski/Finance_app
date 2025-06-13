@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:scaffold_project/Presentation/store/financial_divided_store.dart';
+import 'package:scaffold_project/Presentation/store/expense_divided_store.dart';
 import 'package:scaffold_project/Presentation/store/list_expense_installments_store.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 

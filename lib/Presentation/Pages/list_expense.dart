@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Controller/Financial/ExpensiveApplication.dart';
 import 'package:scaffold_project/Presentation/Widgets/App_Bar/app_bar_custom.dart';
+
 import 'package:scaffold_project/Presentation/store/list_expense_store.dart';
 
 ListExpenseStore _listExpenseStore = GetIt.I<ListExpenseStore>();
@@ -27,31 +28,24 @@ class _ExpenseListState extends State<ExpenseList> {
 
   @override
   Widget build(BuildContext context) {
-    //..._financialStore.getListItens["widget"] as Widget
-
     return MaterialApp(
       home: Scaffold(
         body: Column(
           children: [
-            const AppBarCustom(), //Mudar para dentro do construct list
+            const AppBarCustom(),
             Expanded(
               child: SizedBox(
                 height: 100,
-                // color: primaryColor,
                 child: RefreshIndicator(
                   onRefresh: () async {
                     _despesas.getExpense().then((value) {
                       _listExpenseStore.constructList(value);
-                      print(value);
                     });
-
-                    print(
-                        'Ao executar essa função, deverá recarregar os itens');
                   },
                   child: ListView.builder(
                     itemCount: _listExpenseStore.listExpense.length,
                     itemBuilder: (context, index) {
-                      return _listExpenseStore.listExpense[index];
+                      return _listExpenseStore.listExpense[index].widget;
                     },
                   ),
                 ),

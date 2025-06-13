@@ -7,12 +7,12 @@ import 'package:scaffold_project/Presentation/Pages/report.dart';
 import 'package:scaffold_project/Presentation/store/auth_store.dart';
 import 'package:scaffold_project/Presentation/store/chart/expense_chart_store.dart';
 import 'package:scaffold_project/Presentation/store/config_financeiro_store.dart';
-import 'package:scaffold_project/Presentation/store/financial_store.dart';
+import 'package:scaffold_project/Presentation/store/expense_store.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
-FinancialStore _financialStore = GetIt.I<FinancialStore>();
+ExpenseStore _financialStore = GetIt.I<ExpenseStore>();
 ExpenseChartViewModel _expenseChartViewModel = GetIt.I<ExpenseChartViewModel>();
 SQFlite sqFlite = GetIt.I<SQFlite>();
 AuthStore _authStore = GetIt.I<AuthStore>();
