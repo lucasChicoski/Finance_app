@@ -55,9 +55,9 @@ class _SignInState extends State<SignIn> {
                 const SizedBox(
                   height: 100,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 228,
-                  child: const Text(
+                  child: Text(
                     'Crie sua conta',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -72,9 +72,9 @@ class _SignInState extends State<SignIn> {
                 const SizedBox(
                   height: 10,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 228,
-                  child: const Text(
+                  child: Text(
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     'Crie uma conta e tenha controle financeiro',
@@ -96,29 +96,29 @@ class _SignInState extends State<SignIn> {
                   child: Column(
                     children: [
                       TextInputCustom(
-                        backGroundColor: Color(0xfff1f4ff),
-                        label: Text('Nome'),
+                        backGroundColor: const Color(0xfff1f4ff),
+                        label: const Text('Nome'),
                         onChange: _siginStore.setName,
                       ),
                       const SizedBox(height: 20),
                       TextInputCustom(
-                        backGroundColor: Color(0xfff1f4ff),
-                        label: Text('Sobrenome'),
+                        backGroundColor: const Color(0xfff1f4ff),
+                        label: const Text('Sobrenome'),
                         onChange: _siginStore.setSobrenome,
                         errorText: _siginStore.validSobrenome,
                       ),
                       const SizedBox(height: 20),
                       TextInputCustom(
-                        backGroundColor: Color(0xfff1f4ff),
-                        label: Text('CPF'),
+                        backGroundColor: const Color(0xfff1f4ff),
+                        label: const Text('CPF'),
                         mask: "###.###.###-##",
                         onChange: _siginStore.setCpf,
                         errorText: _siginStore.validCPF,
                       ),
                       const SizedBox(height: 20),
                       TextInputCustom(
-                        backGroundColor: Color(0xfff1f4ff),
-                        label: Text('email'),
+                        backGroundColor: const Color(0xfff1f4ff),
+                        label: const Text('email'),
                         onChange: _siginStore.setEmail,
                         errorText: _siginStore.validEmail,
                       ),
@@ -129,14 +129,14 @@ class _SignInState extends State<SignIn> {
                           icon: iconVisibility,
                         ),
                         onChange: _siginStore.setPassword,
-                        backGroundColor: Color(0xfff1f4ff),
-                        label: Text('Senha'),
+                        backGroundColor: const Color(0xfff1f4ff),
+                        label: const Text('Senha'),
                         obscureText: hidePassword,
                       ),
                       const SizedBox(height: 20),
                       TextInputCustom(
-                        backGroundColor: Color(0xfff1f4ff),
-                        label: Text('Confirme a senha'),
+                        backGroundColor: const Color(0xfff1f4ff),
+                        label: const Text('Confirme a senha'),
                         errorText: _siginStore.validPasswd,
                         obscureText: hidePassword,
                         onChange: _siginStore.setRepeatPassword,
@@ -156,7 +156,7 @@ class _SignInState extends State<SignIn> {
                                   10), // Borda arredondada
                             ),
                           ),
-                          child: Text('Cadastrar',
+                          child: const Text('Cadastrar',
                               style: TextStyle(color: Colors.white)),
                         ),
                       ),

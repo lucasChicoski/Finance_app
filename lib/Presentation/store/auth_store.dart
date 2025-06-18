@@ -45,7 +45,7 @@ class AuthStore extends ChangeNotifier {
 
       _listExpenseStore.constructList(user.despesasAgrupadas ?? []);
 
-      NavigationPages.navigationToPageMaterial(context, Home());
+      NavigationPages.navigationToPageMaterial(context, const Home());
     } else {
       simpleToast(context, item: 'Erro ao efetuar login');
     }

@@ -29,9 +29,9 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(
                   height: 100,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 228,
-                  child: const Text(
+                  child: Text(
                     'Faça seu login',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -46,9 +46,9 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 228,
-                  child: const Text(
+                  child: Text(
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     'Bem vindo de volta! Você fez muita falta.',
@@ -70,14 +70,14 @@ class LoginScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       TextInputCustom(
-                        backGroundColor: Color(0xfff1f4ff),
+                        backGroundColor: const Color(0xfff1f4ff),
                         onChange: _authStore.setCpf,
                         label: const Text('Cpf'),
                         mask: '###.###.###-##',
                       ),
                       const SizedBox(height: 20),
                       TextInputCustom(
-                        backGroundColor: Color(0xfff1f4ff),
+                        backGroundColor: const Color(0xfff1f4ff),
                         onChange: _authStore.setPasswd,
                         label: const Text('Senha'),
                       ),
@@ -111,7 +111,7 @@ class LoginScreen extends StatelessWidget {
                                   10), // Borda arredondada
                             ),
                           ),
-                          child: Text(
+                          child: const Text(
                             'Entrar',
                             style: TextStyle(color: Colors.white),
                           ),

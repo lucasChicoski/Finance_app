@@ -41,19 +41,19 @@ class ReportView extends StatelessWidget {
                 const Spaces(
                   height: 50,
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'Balanço total',
                         style:
                             TextStyle(fontSize: 20, color: Color(0xff343434)),
                       ),
                       Text(
                         '123',
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontSize: 35,
                             fontWeight: FontWeight.bold,
                             color: Color(0xff343434)),
