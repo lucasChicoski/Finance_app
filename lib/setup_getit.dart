@@ -10,6 +10,7 @@ import 'package:scaffold_project/Presentation/store/list_expense_installments_st
 import 'package:scaffold_project/Presentation/store/list_expense_store.dart';
 import 'package:scaffold_project/Presentation/store/navigation_store.dart';
 import 'package:scaffold_project/Presentation/store/sigin_store.dart';
+import 'package:scaffold_project/Presentation/store/update_expense_store.dart';
 
 final getIt = GetIt.instance;
 
@@ -25,5 +26,6 @@ setUpGetIt() {
   getIt.registerSingleton<AuthStore>(AuthStore());
   getIt.registerSingleton<ListExpenseStore>(ListExpenseStore());
   getIt.registerSingleton<ConfigFinanceiroStore>(ConfigFinanceiroStore());
-  getIt.registerSingleton<ListExpenseInstallmentsStore>(ListExpenseInstallmentsStore());
+  getIt.registerSingleton<ListExpenseInstallmentsStore>(ListExpenseInstallmentsStore()); //UpdateExpenseStore
+  getIt.registerSingleton<UpdateExpenseStore>(UpdateExpenseStore());
 }

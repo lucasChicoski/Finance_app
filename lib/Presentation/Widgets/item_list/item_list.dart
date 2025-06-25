@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:scaffold_project/Presentation/Widgets/alert/custom_alert.dart';
+import 'package:scaffold_project/Presentation/Widgets/alert/custom_alert_edit_expense.dart';
 import 'package:scaffold_project/Presentation/store/expense_store.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
@@ -76,7 +76,7 @@ class ItemListWidget extends StatelessWidget {
             child: Row(
               children: [
                 IconButton(
-                    onPressed: () => alert(context, item: descriptionSpent),
+                    onPressed: () => alert(context, hash, item: descriptionSpent),
                     icon: Icon(
                       Icons.edit,
                       color: quartaryColro,

@@ -1,3 +1,4 @@
+import 'package:scaffold_project/Domain/DTO/expense_update_DTO.dart';
 import 'package:scaffold_project/Domain/DTO/expense_v2.dart';
 import 'package:scaffold_project/Service/ExpensesService.dart';
 import 'package:scaffold_project/Utils/IOC.dart';
@@ -24,6 +25,13 @@ class ExpensiveApplication {
     List<dynamic> listExpense = await expenseSservice.getExpense();
 
     return listExpense;
+  }
+
+  Future updateExpense(ExpenseUpdateDTO json) async {
+    ExpenseSservice expenseSservice =
+        await ServiceFactory.getService(ServiceType.expensesService);
+
+    return await expenseSservice.updateExpense(json);
   }
 
   Future deleteExpense(String hash) async {

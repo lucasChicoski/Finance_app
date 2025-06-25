@@ -35,6 +35,12 @@ class _AppBarCustomState extends State<AppBarCustom> {
         setState(() {});
       }
     });
+    _configFinanceiroStore.addListener(() {
+      //Verifica se o widget está montado para dar um setState na página
+      if (mounted) {
+        setState(() {});
+      }
+    });
     super.initState();
   }
 

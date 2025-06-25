@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:scaffold_project/Domain/DTO/ExpenseDTO.dart';
+import 'package:scaffold_project/Domain/DTO/expense_update_DTO.dart';
 import 'package:scaffold_project/Domain/DTO/expense_v2.dart';
 import 'package:scaffold_project/Infra/Repositories/expenses_repositorie/IExpensesRepository.dart';
 
@@ -35,8 +35,12 @@ class ExpensesRepositorie implements IExpensesRepository {
   }
 
   @override
-  Future updateExpense(ExpenseDTO value) {
-    // TODO: implement updateExpense
-    throw UnimplementedError();
+  Future updateExpense(ExpenseUpdateDTO value) {
+    try {
+      var result = _dio.post('/update-expense', data: value.toJson());
+      return result.then((response) => response.data['data']);
+    } catch (e) {
+      throw Error();
+    }
   }
 }

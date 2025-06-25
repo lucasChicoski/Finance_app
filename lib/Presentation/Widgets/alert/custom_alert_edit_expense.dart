@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Presentation/Components/buttons/elevated_button_custom.dart';
 import 'package:scaffold_project/Presentation/Components/text_input/text_input_custom.dart';
+import 'package:scaffold_project/Presentation/store/update_expense_store.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
-alert(BuildContext context, {String item = ''}) {
+UpdateExpenseStore updateExpenseStore = GetIt.instance<UpdateExpenseStore>();
+
+alert(BuildContext context, String hash, {String item = ''}) {
   double sizeButton = 0.3;
   return showDialog(
     context: context,
@@ -33,17 +37,19 @@ alert(BuildContext context, {String item = ''}) {
                       fontWeight: FontWeight.w300),
                 ),
                 const SizedBox(height: 30),
-                const TextInputCustom(
+                TextInputCustom(
                     hint: 'Valor do gasto',
-                    prefix: Icon(Icons.attach_money),
+                    onChange: updateExpenseStore.setValue,
+                    prefix: const Icon(Icons.attach_money),
                     textType: TextInputType.number),
                 const SizedBox(
                   height: 10,
                 ),
-                const TextInputCustom(
+                TextInputCustom(
+                    onChange: updateExpenseStore.setDescription,
                     textType: TextInputType.text,
                     hint: 'Descrição do gasto',
-                    prefix: Icon(
+                    prefix: const Icon(
                       Icons.description,
                     )),
               ],
@@ -53,10 +59,22 @@ alert(BuildContext context, {String item = ''}) {
                 ElevatedButtonCustom(
                   label: 'Excluir',
                   size: sizeButton,
-                  onPressed: (){},
+                  onPressed: () {},
                 ),
                 const SizedBox(width: 10),
-                ElevatedButtonCustom(label: 'Atualizar', size: sizeButton, onPressed: (){},),
+                ElevatedButtonCustom(
+                  label: 'Atualizar',
+                  size: sizeButton,
+                  onPressed: () {
+                    updateExpenseStore.submitUpdate(hash).then((response) {
+                      Navigator.of(context).pop();
+                      updateExpenseStore.reset(); // Reset after submission
+                    }).catchError((error) {
+                      print('Error updating expense: $error');
+                      // Handle error appropriately, e.g., show a snackbar
+                    });
+                  },
+                ),
               ],
             )
           ],

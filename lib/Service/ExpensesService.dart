@@ -1,3 +1,4 @@
+import 'package:scaffold_project/Domain/DTO/expense_update_DTO.dart';
 import 'package:scaffold_project/Domain/DTO/expense_v2.dart';
 import 'package:scaffold_project/Infra/Repositories/expenses_repositorie/ExpensesRepositorie.dart';
 import 'package:scaffold_project/Utils/IOC.dart';
@@ -17,6 +18,13 @@ class ExpenseSservice {
 
     List<dynamic> result = await expenseRepository.getExpense(1);
     return result;
+  }
+
+  Future updateExpense(ExpenseUpdateDTO value) async {
+    ExpensesRepositorie expenseRepository =
+        RepositoryFactory.getRepository(RepositoryType.expensesRepositories);
+
+    return await expenseRepository.updateExpense(value);
   }
 
   Future deleteExpense(String hash) async {
