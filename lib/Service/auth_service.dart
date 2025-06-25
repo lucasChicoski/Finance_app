@@ -1,5 +1,5 @@
 import 'package:scaffold_project/Domain/DTO/AuthDTO.dart';
-import 'package:scaffold_project/Domain/DTO/FinanceConfigDTO.dart';
+import 'package:scaffold_project/Domain/DTO/finance_config_dto.dart';
 import 'package:scaffold_project/Domain/DTO/UserDTO.dart';
 import 'package:scaffold_project/Global/Returns/ReturnService.dart';
 import 'package:scaffold_project/Global/dio_response.dart';

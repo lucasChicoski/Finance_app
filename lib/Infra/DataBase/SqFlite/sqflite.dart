@@ -74,7 +74,7 @@ class SQFlite implements ISqflite {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             id_usuario INTEGER,
             renda REAL,
-            guarde_dinheiro REAL,
+            save_money REAL,
             balance REAL,
             FOREIGN KEY (id_usuario) REFERENCES usuario(id)
           )
@@ -114,7 +114,7 @@ class SQFlite implements ISqflite {
         );
 
         await db.rawInsert(
-          'INSERT INTO configuracao_financeiro(id_usuario, renda, guarde_dinheiro, balance) VALUES(1, 0, 0, 0)',
+          'INSERT INTO configuracao_financeiro(id_usuario, renda, save_money, balance) VALUES(1, 0, 0, 0)',
         );
       },
     );

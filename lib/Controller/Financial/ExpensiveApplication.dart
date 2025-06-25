@@ -1,4 +1,4 @@
-import 'package:scaffold_project/Domain/DTO/expense_update_DTO.dart';
+import 'package:scaffold_project/Domain/DTO/expense_update_dto.dart';
 import 'package:scaffold_project/Domain/DTO/expense_v2.dart';
 import 'package:scaffold_project/Service/ExpensesService.dart';
 import 'package:scaffold_project/Utils/IOC.dart';
@@ -12,8 +12,7 @@ class ExpensiveApplication {
     ExpenseSservice expenseSservice =
         await ServiceFactory.getService(ServiceType.expensesService);
 
-    Expensev2DTO result =
-        await expenseSservice.insertExpense(expenseV2); 
+    Expensev2DTO result = await expenseSservice.insertExpense(expenseV2);
 
     return result;
   }

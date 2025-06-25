@@ -1,4 +1,4 @@
-import 'package:scaffold_project/Domain/DTO/FinanceConfigDTO.dart';
+import 'package:scaffold_project/Domain/DTO/finance_config_dto.dart';
 import 'package:scaffold_project/Infra/Repositories/config_repositories/finance/config_finance_repository.dart';
 import 'package:scaffold_project/Utils/IOC.dart';
 

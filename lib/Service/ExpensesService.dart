@@ -1,4 +1,4 @@
-import 'package:scaffold_project/Domain/DTO/expense_update_DTO.dart';
+import 'package:scaffold_project/Domain/DTO/expense_update_dto.dart';
 import 'package:scaffold_project/Domain/DTO/expense_v2.dart';
 import 'package:scaffold_project/Infra/Repositories/expenses_repositorie/ExpensesRepositorie.dart';
 import 'package:scaffold_project/Utils/IOC.dart';

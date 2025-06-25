@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:scaffold_project/Presentation/Components/Cards/card_inputs.dart';
 import 'package:scaffold_project/Presentation/Components/buttons/elevated_button_custom.dart';
+import 'package:scaffold_project/Presentation/store/config_financeiro_store.dart';
 import 'package:scaffold_project/Utils/navigation_class.dart';
 import 'package:scaffold_project/Utils/size_config.dart';
 import 'package:scaffold_project/Utils/theme_colors.dart';
 
-class PageFinancial extends StatelessWidget {
+ConfigFinanceiroStore _configFinanceiroStore = GetIt.I<ConfigFinanceiroStore>();
+
+
+class PageFinancial extends StatefulWidget {
   const PageFinancial({super.key});
 
+  @override
+  State<PageFinancial> createState() => _PageFinancialState();
+}
+
+class _PageFinancialState extends State<PageFinancial> {
+    final TextEditingController _controllerRenda = TextEditingController(text: _configFinanceiroStore.renda.toString());
+    final TextEditingController _controllerSaveMoney = TextEditingController(text: _configFinanceiroStore.guardaDinheiro.toString());
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -34,9 +46,8 @@ class PageFinancial extends StatelessWidget {
                             height: 30,
                           ),
                           CardInput(
-                            // conttroller: TextEditingController(
-                            //     text: _financialStore.getRendaToString),
-                            onChange: (value) {},
+                            conttroller: _controllerRenda,
+                            onChange: _configFinanceiroStore.setRendaToUpdate,
                             label: "Renda",
                             hint: "Digite sua renda",
                           ),
@@ -44,9 +55,9 @@ class PageFinancial extends StatelessWidget {
                             height: 10,
                           ),
                           CardInput(
-                            // conttroller: TextEditingController(
-                            //     text: _financialStore.getSaveMoneyToString),
-                            onChange:(value) {},
+                            conttroller: _controllerSaveMoney,
+                            onChange: _configFinanceiroStore
+                                .setGuardarDinheiroToUpdate,
                             label: "Guarde seu dinheiro",
                             hint: "Quanto deseja guardar por mês",
                           ),
@@ -57,7 +68,7 @@ class PageFinancial extends StatelessWidget {
                     child: ElevatedButtonCustom(
                       label: "Salvar",
                       onPressed: () {
-                        // _financialStore.calculateBalance(_financialStore.listValues);
+                        _configFinanceiroStore.updateConfig();
                         NavigationPages.pop(context);
                       },
                     ),

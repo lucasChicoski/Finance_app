@@ -39,9 +39,9 @@ class AuthStore extends ChangeNotifier {
 
       user = response.data as UserDTO;
 
-      _configFinanceiroStore.setBalance(user.config!.balance!);
-      _configFinanceiroStore.setRenda(user.config!.renda!);
-      _configFinanceiroStore.setGuardaDinheiro(user.config!.saveMoney!);
+      _configFinanceiroStore.setBalance(user.config?.balance ?? 0);
+      _configFinanceiroStore.setRenda(user.config?.renda ?? 0);
+      _configFinanceiroStore.setGuardaDinheiro(user.config?.saveMoney ?? 0);
 
       _listExpenseStore.constructList(user.despesasAgrupadas ?? []);
 

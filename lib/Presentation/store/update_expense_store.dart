@@ -1,8 +1,6 @@
-
-
 import 'package:flutter/foundation.dart';
 import 'package:scaffold_project/Controller/Financial/ExpensiveApplication.dart';
-import 'package:scaffold_project/Domain/DTO/expense_update_DTO.dart';
+import 'package:scaffold_project/Domain/DTO/expense_update_dto.dart';
 
 ExpensiveApplication expensiveApplication = ExpensiveApplication();
 
@@ -29,10 +27,8 @@ class UpdateExpenseStore extends ChangeNotifier {
     notifyListeners();
   }
 
-
   Future<void> submitUpdate(String hash) async {
-
-    if(hash.isEmpty) {
+    if (hash.isEmpty) {
       throw Exception('Hash cannot be empty');
     }
 
@@ -43,7 +39,8 @@ class UpdateExpenseStore extends ChangeNotifier {
     );
 
     try {
-     final response = await expensiveApplication.updateExpense(expenseUpdateDTO);
+      final response =
+          await expensiveApplication.updateExpense(expenseUpdateDTO);
       reset(); // Reset after submission
       return response; // Return the response if needed
     } catch (e) {

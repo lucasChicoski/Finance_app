@@ -4,7 +4,6 @@ import 'package:scaffold_project/Infra/DataBase/SqFlite/sqflite.dart';
 import 'package:scaffold_project/Presentation/Components/buttons/outlined_button_custom.dart';
 import 'package:scaffold_project/Presentation/Pages/register_spent_not_divided.dart';
 import 'package:scaffold_project/Presentation/Pages/report.dart';
-import 'package:scaffold_project/Presentation/store/auth_store.dart';
 import 'package:scaffold_project/Presentation/store/chart/expense_chart_store.dart';
 import 'package:scaffold_project/Presentation/store/config_financeiro_store.dart';
 import 'package:scaffold_project/Presentation/store/expense_store.dart';
@@ -15,7 +14,6 @@ import 'package:scaffold_project/Utils/theme_colors.dart';
 ExpenseStore _financialStore = GetIt.I<ExpenseStore>();
 ExpenseChartViewModel _expenseChartViewModel = GetIt.I<ExpenseChartViewModel>();
 SQFlite sqFlite = GetIt.I<SQFlite>();
-AuthStore _authStore = GetIt.I<AuthStore>();
 ConfigFinanceiroStore _configFinanceiroStore =
     GetIt.I<ConfigFinanceiroStore>();
 
@@ -68,7 +66,7 @@ class _AppBarCustomState extends State<AppBarCustom> {
                   color: quartaryColro,
                   fontWeight: FontWeight.w800,
                   fontSize: 25)),
-          Text('R\$ ${_authStore.user.config?.renda.toString() ?? '0.00'}',
+          Text('R\$ ${_configFinanceiroStore.renda.toStringAsFixed(2)}',
               style: TextStyle(
                   fontWeight: FontWeight.w800,
                   color: quartaryColro,
