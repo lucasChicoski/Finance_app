@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:scaffold_project/Infra/DataBase/SqFlite/sqflite.dart';
 import 'package:scaffold_project/Presentation/Components/buttons/outlined_button_custom.dart';
 import 'package:scaffold_project/Presentation/Pages/register_spent_not_divided.dart';
 import 'package:scaffold_project/Presentation/Pages/report.dart';
@@ -13,7 +12,7 @@ import 'package:scaffold_project/Utils/theme_colors.dart';
 
 ExpenseStore _financialStore = GetIt.I<ExpenseStore>();
 ExpenseChartViewModel _expenseChartViewModel = GetIt.I<ExpenseChartViewModel>();
-SQFlite sqFlite = GetIt.I<SQFlite>();
+
 ConfigFinanceiroStore _configFinanceiroStore =
     GetIt.I<ConfigFinanceiroStore>();
 
